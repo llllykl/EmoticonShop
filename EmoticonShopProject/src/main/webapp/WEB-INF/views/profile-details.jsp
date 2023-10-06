@@ -9,7 +9,16 @@
   ================================================== -->
   <meta charset="utf-8">
   <title>이모티콘샵</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
   
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.png" />
   
@@ -26,11 +35,13 @@
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="resources/css/style.css">
+  <!-- Profile-detail Stylesheet -->
+  <link rel="stylesheet" href="resources/css/profile-details.css">
 
 </head>
+
 <body id="body">
-	<div id="wrap">
-	<!-- Start Top Header Bar -->
+<!-- Start Top Header Bar -->
 <section class="top-header">
 	<div class="container">
 		<div class="row">
@@ -105,14 +116,12 @@
 		</div>
 	</div>
 </section><!-- End Top Header Bar -->
-
-
 <!-- Main Menu Section -->
 <section class="menu">
 	<nav class="navbar navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<h2 class="menu-title">메인 메뉴</h2>
+				<h2 class="menu-title">Main Menu</h2>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
 					aria-expanded="false" aria-controls="navbar">
 					<span class="sr-only">Toggle navigation</span>
@@ -125,59 +134,77 @@
 
 			<!-- Navbar Links -->
 			<div id="navbar" class="navbar-collapse collapse text-center">
-					<ul class="nav navbar-nav">
-						<!-- Home -->
-						<li class="home-tab">
-							<a href="index" style="font-size: large;text-decoration: underline; 
-							text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
-						</li><!-- / Home -->
-						<!-- 신규 -->
-						<li class="new-tab">
-							<a href="newpage"  data-delay="350" style="font-size: large;color: gray;">신규</a>
-						</li><!-- / 신규 -->
-						<!-- 인기 -->
-						<li class="popular-tab">
-							<a href="poppage"  data-delay="350" style="font-size: large;color: gray;">인기</a>
-						</li><!-- / 인기 -->
-					</ul><!-- / .nav .navbar-nav -->
-				</div>
-			<!--/.navbar-collapse -->
+				<ul class="nav navbar-nav">
+					<!-- Home -->
+					<li class="home-tab">
+						<a href="index" style="font-size: large;text-decoration: underline; 
+						text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
+					</li><!-- / Home -->
+					<!-- 신규 -->
+					<li class="new-tab">
+						<a href="newpage"  data-delay="350" style="font-size: large;color: gray;">신규</a>
+					</li><!-- / 신규 -->
+					<!-- 인기 -->
+					<li class="popular-tab">
+						<a href="poppage"  data-delay="350" style="font-size: large;color: gray;">인기</a>
+					</li><!-- / 인기 -->
+				</ul><!-- / .nav .navbar-nav -->
+			</div>
+		  <!--/.navbar-collapse -->
 		</div><!-- / .container -->
 	</nav>
 </section>
-<!-- banner  -->
-<div class="hero-slider">
-	
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(resources/images/slider/slider1.png);">
-		<div class="container">
-		</div>
-	</div>
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(resources/images/slider/slider2.png);">
-		<div class="container">
-		</div>
-	</div>
-</div>
 
-<div id="content-wrap">
-		<!-- main section -->
-	<section class="main section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="title text-center">
-						<h2>body</h2>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="category-box category-box-2">
-					</div>
+<section class="page-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+					<h1 class="page-name">MyPage</h1>
+					<ol class="breadcrumb">
+						<li><a href="index">Home</a></li>
+						<li class="active">my account</li>
+					</ol>
 				</div>
 			</div>
 		</div>
-	</section>
 	</div>
-</div>
-
+</section>
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-inline dashboard-menu text-center">
+          
+          <li><a href="order">Orders</a></li>
+			
+          <li><a class="active" href="mypage">Profile Details</a></li>
+        </ul>
+        <div class="dashboard-wrapper dashboard-user-profile">
+          <div class="media">
+            <div class="pull-left text-center" href="#!">
+              <img class="media-object user-img" src="resources/images/avater.jpg" alt="Image">
+              <a href="#x" class="btn btn-transparent mt-20">Change Image</a>
+            </div>
+            <div class="media-body">
+              <ul class="user-profile-list">
+                <li><span>Full Name:</span>Johanna Doe</li>
+                <li><span>Country:</span>USA</li>
+                <li><span>Email:</span>mail@gmail.com</li>
+                <li><span>Phone:</span>+880123123</li>
+                <li><span>Date of Birth:</span>Dec , 22 ,1991</li>
+              </ul>
+              <a href="memberupdate"><button class="custom-btn btn-4"><span>회원수정</span></button></a>
+              <a href="memberdelete"><button class="custom-btn btn-4"><span>회원탈퇴</span></button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+	</div>
+    </div>
+  </div>
+</section>
 <!-- footer -->
 <footer class="footer section text-center">
 	<div class="container">
@@ -202,7 +229,6 @@
 		</div>
 	</div>
 </footer>
-
     <!-- 
     Essential Scripts
     =====================================-->
@@ -229,6 +255,7 @@
     <script type="text/javascript" src="resources/plugins/google-map/gmap.js"></script>
 
     <!-- Main Js File -->
-    <script src="resources/js/script.js"></script>
-</body>
+    <script src="resources/js/script.js"></script> 
+
+  </body>
 </html>

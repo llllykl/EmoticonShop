@@ -91,7 +91,7 @@
 								</div>
 							</div><!-- / info -->
 							<ul class="text-center profile-buttons">
-								<li><a href="#" class="btn btn-small" style="font-size: small;">MyPage</a></li>
+								<li><a href="mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
 								<li><a href="#" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
 							</ul>
 						</div>

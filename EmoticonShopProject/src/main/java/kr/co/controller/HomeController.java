@@ -52,4 +52,20 @@ public class HomeController {
 	public String adminPage() {
 		return "adminPage";
 	}	
+	@GetMapping("mypage") 
+	public String myPage() {
+		return "profile-details";
+	}
+	@GetMapping("order")
+	public String order() {
+		return "order";
+	}
+	@GetMapping("memberupdate")
+	public String memberUpdate() {
+		return "member-update";
+	}
+	@GetMapping("memberdelete")
+	public String memberDelete() {
+		return "member-delete";
+	}
 }
