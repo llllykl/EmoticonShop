@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
+
 @Controller
 public class HomeController {
 	
@@ -34,38 +35,6 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "index";
-	}
-	@GetMapping("index")
-	public String index() {
-		return "index";
-	}
-	@GetMapping("newpage")
-	public String newPage() {
-		return "newPage";
-	}
-	@GetMapping("poppage") 
-	public String popPage() {
-		return "popPage";
-	}
-	@GetMapping("adminpage") 
-	public String adminPage() {
-		return "adminPage";
+		return "./shop/index";
 	}	
-	@GetMapping("mypage") 
-	public String myPage() {
-		return "profile-details";
-	}
-	@GetMapping("order")
-	public String order() {
-		return "order";
-	}
-	@GetMapping("memberupdate")
-	public String memberUpdate() {
-		return "member-update";
-	}
-	@GetMapping("memberdelete")
-	public String memberDelete() {
-		return "member-delete";
-	}
 }

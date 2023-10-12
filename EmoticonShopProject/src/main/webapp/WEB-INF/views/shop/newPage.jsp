@@ -10,21 +10,21 @@
   <title>이모티콘샵</title>
   
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.png" />
   
   <!-- Themefisher Icon font -->
-  <link rel="stylesheet" href="resources/plugins/themefisher-font/style.css">
+  <link rel="stylesheet" href="../resources/plugins/themefisher-font/style.css">
   <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="resources/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../resources/plugins/bootstrap/css/bootstrap.min.css">
   
   <!-- Animate css -->
-  <link rel="stylesheet" href="resources/plugins/animate/animate.css">
+  <link rel="stylesheet" href="../resources/plugins/animate/animate.css">
   <!-- Slick Carousel -->
-  <link rel="stylesheet" href="resources/plugins/slick/slick.css">
-  <link rel="stylesheet" href="resources/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="../resources/plugins/slick/slick.css">
+  <link rel="stylesheet" href="../resources/plugins/slick/slick-theme.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
 </head>
 <body id="body">
 	<div id="wrap">
@@ -36,7 +36,7 @@
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<!-- Site Logo -->
 				<div class="logo text-center">
-					<a href="index">
+					<a href="/shop/">
 						<!-- replace logo here -->
 						<svg width="210px" height="30px" viewBox="0 0 300 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -53,16 +53,15 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
-				
 				<!-- Cart -->
 				<ul class="top-menu text-right list-inline">
 					<!-- Admin -->
 					<li>
-						<a href="adminpage">Admin</a>
+						<a href="/admin/">Admin</a>
 					</li><!-- / Admin -->
 					<!-- Search -->
 					<li class="dropdown search dropdown-slide">
-						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"  style="font-size: medium;"><i
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"  style="font-size: medium;"><i
 								class="tf-ion-ios-search-strong"></i>&nbsp;Search</a>
 						<ul class="dropdown-menu search-dropdown">
 							<li>
@@ -76,7 +75,7 @@
 						<li class="dropdown cart-nav dropdown-slide">
 						<a href="login.jsp" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
 							class="tf-ion-android-person"></i>&nbsp;My</a>
-					 -->
+					-->
 					 <li class="dropdown profile-nav dropdown-slide">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"  style="font-size: medium;"><i
 								class="tf-ion-android-person"></i>&nbsp;My</a>
@@ -91,8 +90,8 @@
 								</div>
 							</div><!-- / info -->
 							<ul class="text-center profile-buttons">
-								<li><a href="mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
-								<li><a href="#" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
+								<li><a href="/shop/mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
+								<li><a href="/shop/" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
 							</ul>
 						</div>
 					</li><!-- / My -->
@@ -127,7 +126,7 @@
 					<ul class="nav navbar-nav">
 						<!-- Home -->
 						<li class="home-tab">
-							<a href="index" style="font-size: large;color: gray;">홈</a>
+							<a href="/" style="font-size: large;color: gray;">홈</a>
 						</li><!-- / Home -->
 						<!-- 신규 -->
 						<li class="new-tab">
@@ -145,7 +144,7 @@
 </section>
 <!-- banner  -->
 <div class="new-banner">
-        <img src="resources/images/newbanner.png"  width="100%" height="auto"/>
+        <img src="../resources/images/newbanner.png"  width="100%" height="auto"/>
 </div>
 
 	<div id="content-wrap">
@@ -169,16 +168,16 @@
 								<a class="link_new new_img" aria-label="토끼 이모티콘" href="#">
 									<ul class="area_newemoticon">
 										<li>
-											<img src="resources/emoticon/1/rabbit1.png">
+											<img src="../resources/emoticon/1/rabbit1.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/1/rabbit2.png">
+											<img src="../resources/emoticon/1/rabbit2.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/1/rabbit3.png">
+											<img src="../resources/emoticon/1/rabbit3.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/1/rabbit4.png">
+											<img src="../resources/emoticon/1/rabbit4.png">
 										</li>
 									</ul>
 								</a>
@@ -196,16 +195,16 @@
 								<a class="link_new new_img" aria-label="동그리 이모티콘" href="#">
 									<ul class="area_newemoticon">
 										<li>
-											<img src="resources/emoticon/2/dongueri1.png">
+											<img src="../resources/emoticon/2/dongueri1.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/2/dongueri2.png">
+											<img src="../resources/emoticon/2/dongueri2.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/2/dongueri3.png">
+											<img src="../resources/emoticon/2/dongueri3.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/2/dongueri4.png">
+											<img src="../resources/emoticon/2/dongueri4.png">
 										</li>
 									</ul>
 								</a>
@@ -223,16 +222,16 @@
 								<a class="link_new new_img" aria-label="강아지 이모티콘" href="#">
 									<ul class="area_newemoticon">
 										<li>
-											<img src="resources/emoticon/3/dog1.png">
+											<img src="../resources/emoticon/3/dog1.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/3/dog2.png">
+											<img src="../resources/emoticon/3/dog2.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/3/dog3.png">
+											<img src="../resources/emoticon/3/dog3.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/3/dog4.png">
+											<img src="../resources/emoticon/3/dog4.png">
 										</li>
 									</ul>
 								</a>
@@ -250,16 +249,16 @@
 								<a class="link_new new_img" aria-label="빵빵이 이모티콘" href="#">
 									<ul class="area_newemoticon">
 										<li>
-											<img src="resources/emoticon/4/bbangbbange1.png">
+											<img src="../resources/emoticon/4/bbangbbange1.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/4/bbangbbange2.png">
+											<img src="../resources/emoticon/4/bbangbbange2.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/4/bbangbbange3.png">
+											<img src="../resources/emoticon/4/bbangbbange3.png">
 										</li>
 										<li>
-											<img src="resources/emoticon/4/bbangbbange4.png">
+											<img src="../resources/emoticon/4/bbangbbange4.png">
 										</li>
 									</ul>
 								</a>
@@ -307,27 +306,27 @@
     =====================================-->
     
     <!-- Main jQuery -->
-    <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="../resources/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.1 -->
-    <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../resources/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Bootstrap Touchpin -->
-    <script src="resources/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="../resources/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <!-- Instagram Feed Js -->
-    <script src="resources/plugins/instafeed/instafeed.min.js"></script>
+    <script src="../resources/plugins/instafeed/instafeed.min.js"></script>
     <!-- Video Lightbox Plugin -->
-    <script src="resources/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+    <script src="../resources/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
     <!-- Count Down Js -->
-    <script src="resources/plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+    <script src="../resources/plugins/syo-timer/build/jquery.syotimer.min.js"></script>
 
     <!-- slick Carousel -->
-    <script src="resources/plugins/slick/slick.min.js"></script>
-    <script src="resources/plugins/slick/slick-animation.min.js"></script>
+    <script src="../resources/plugins/slick/slick.min.js"></script>
+    <script src="../resources/plugins/slick/slick-animation.min.js"></script>
 
     <!-- Google Mapl -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-    <script type="text/javascript" src="resources/plugins/google-map/gmap.js"></script>
+    <script type="text/javascript" src="../resources/plugins/google-map/gmap.js"></script>
 
     <!-- Main Js File -->
-    <script src="resources/js/script.js"></script>
+    <script src="../resources/js/script.js"></script>
 </body>
 </html>

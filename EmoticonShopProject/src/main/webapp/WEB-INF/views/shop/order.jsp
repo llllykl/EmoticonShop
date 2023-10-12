@@ -21,18 +21,18 @@
   <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.png" />
   
   <!-- Themefisher Icon font -->
-  <link rel="stylesheet" href="resources/plugins/themefisher-font/style.css">
+  <link rel="stylesheet" href="../resources/plugins/themefisher-font/style.css">
   <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="resources/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../resources/plugins/bootstrap/css/bootstrap.min.css">
   
   <!-- Animate css -->
-  <link rel="stylesheet" href="resources/plugins/animate/animate.css">
+  <link rel="stylesheet" href="../resources/plugins/animate/animate.css">
   <!-- Slick Carousel -->
-  <link rel="stylesheet" href="resources/plugins/slick/slick.css">
-  <link rel="stylesheet" href="resources/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="../resources/plugins/slick/slick.css">
+  <link rel="stylesheet" href="../resources/plugins/slick/slick-theme.css">
   
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="resources/css/style.css">
+  <link rel="stylesheet" href="../resources/css/style.css">
 
 </head>
 
@@ -45,7 +45,7 @@
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<!-- Site Logo -->
 				<div class="logo text-center">
-					<a href="index">
+					<a href="/shop/">
 						<!-- replace logo here -->
 						<svg width="210px" height="30px" viewBox="0 0 300 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -62,10 +62,11 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Cart -->
 				<ul class="top-menu text-right list-inline">
 					<!-- Admin -->
 					<li>
-						<a href="adminpage">Admin</a>
+						<a href="/admin/">Admin</a>
 					</li><!-- / Admin -->
 					<!-- Search -->
 					<li class="dropdown search dropdown-slide">
@@ -98,8 +99,8 @@
 								</div>
 							</div><!-- / info -->
 							<ul class="text-center profile-buttons">
-								<li><a href="mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
-								<li><a href="#" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
+								<li><a href="/shop/mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
+								<li><a href="/shop/" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
 							</ul>
 						</div>
 					</li><!-- / My -->
@@ -111,8 +112,6 @@
 		</div>
 	</div>
 </section><!-- End Top Header Bar -->
-
-
 
 <!-- Main Menu Section -->
 <section class="menu">
@@ -135,7 +134,7 @@
 				<ul class="nav navbar-nav">
 					<!-- Home -->
 					<li class="home-tab">
-						<a href="index" style="font-size: large;text-decoration: underline; 
+						<a href="/shop/" style="font-size: large;text-decoration: underline; 
 						text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
 					</li><!-- / Home -->
 					<!-- 신규 -->
@@ -268,28 +267,28 @@
     =====================================-->
     
     <!-- Main jQuery -->
-    <script src="resources/plugins/jquery/dist/jquery.min.js"></script>
+    <script src="../resources/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.1 -->
-    <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../resources/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- Bootstrap Touchpin -->
-    <script src="resources/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="../resources/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <!-- Instagram Feed Js -->
-    <script src="resources/plugins/instafeed/instafeed.min.js"></script>
+    <script src="../resources/plugins/instafeed/instafeed.min.js"></script>
     <!-- Video Lightbox Plugin -->
-    <script src="resources/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
+    <script src="../resources/plugins/ekko-lightbox/dist/ekko-lightbox.min.js"></script>
     <!-- Count Down Js -->
-    <script src="resources/plugins/syo-timer/build/jquery.syotimer.min.js"></script>
+    <script src="../resources/plugins/syo-timer/build/jquery.syotimer.min.js"></script>
 
     <!-- slick Carousel -->
-    <script src="resources/plugins/slick/slick.min.js"></script>
-    <script src="resources/plugins/slick/slick-animation.min.js"></script>
+    <script src="../resources/plugins/slick/slick.min.js"></script>
+    <script src="../resources/plugins/slick/slick-animation.min.js"></script>
 
     <!-- Google Mapl -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
-    <script type="text/javascript" src="resources/plugins/google-map/gmap.js"></script>
+    <script type="text/javascript" src="../resources/plugins/google-map/gmap.js"></script>
 
     <!-- Main Js File -->
-    <script src="resources/js/script.js"></script>
+    <script src="../resources/js/script.js"></script>
 
   </body>
 </html>

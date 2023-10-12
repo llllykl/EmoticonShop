@@ -1,5 +1,7 @@
 package kr.co.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -10,5 +12,6 @@ public class ProductDTO {
 	private String p_image; // 상품이미지명
 	private String p_creator; // 제작자명
 	private String p_regdate; // 상품등록일
-	private Long p_readcount; // 상품조회수
+	private int p_readcount; // 상품조회수
+	private String p_etc; // 기타사항
 }

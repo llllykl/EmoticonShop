@@ -10,7 +10,7 @@ public class MemberDTO {
 	private String m_name; // 회원이름
 	private String m_phone; // 회원폰번호
 	private String m_email; // 회원이메일
-	private Long m_gender; // 회원성별
+	private int m_gender; // 회원성별
 	private String m_point; // 회원포인트
-	private Long m_access; // 권한: 회원 0, 관리자 1
+	private int m_access; // 권한: 회원 0, 관리자 1
 }
