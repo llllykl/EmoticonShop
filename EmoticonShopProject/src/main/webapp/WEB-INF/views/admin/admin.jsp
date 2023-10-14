@@ -42,34 +42,17 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="px-5" scope="row"><a href="get" class="text-primary fw-bold">&nbsp;1</a></td>
-                        <th class="px-5"><a href="get"><img src="../resources/assets/img/product-1.gif" alt=""></a></th>
-                        <td class="px-5"><a href="get" class="text-primary fw-bold">순수토끼 톡희의 일상 5</a></td>
-                        <td class="px-5" class="fw-bold">I'm</td>
-                        <td class="px-5">₩3,000</td>
-                      </tr>
-                      <tr>
-                        <td class="px-5" scope="row"><a href="#" class="text-primary fw-bold">&nbsp;2</a></td>
-                        <th class="px-5"><a href="#"><img src="../resources/assets/img/product-2.gif" alt=""></a></th>
-                        <td class="px-5"><a href="#" class="text-primary fw-bold">Just be HAPPY!</a></td>
-                        <td class="px-5" class="fw-bold">카카오프렌즈</td>
-                        <td class="px-5">₩3,000</td>
-                      </tr>
-                      <tr>
-                        <td class="px-5" scope="row"><a href="#" class="text-primary fw-bold">&nbsp;3</a></td>
-                        <th class="px-5"><a href="#"><img src="../resources/assets/img/product-3.png" alt=""></a></th>
-                        <td class="px-5"><a href="#" class="text-primary fw-bold">잔망 루피7</a></td>
-                        <td class="px-5" class="fw-bold">잔망 루피</td>
-                        <td class="px-5">₩3,000</td>
-                      </tr>
-                      <tr>
-                        <td class="px-5" scope="row"><a href="#" class="text-primary fw-bold">&nbsp;4</a></td>
-                        <th class="px-5"><a href="#"><img src="../resources/assets/img/product-4.png" alt=""></a></th>
-                        <td class="px-5"><a href="#" class="text-primary fw-bold">승질 드러운 오철이는 기존쎄긔</a></td>
-                        <td class="px-5" class="fw-bold">와빠</td>
-                        <td class="px-5">₩3,000</td>
-                      </tr>
+                    
+                    <c:forEach items="${plist}" var="product">
+                    <tr>
+                    <td class="px-5" scope="row"><a href="product-get?p_no=${product.p_no}" class="text-primary fw-bold">&nbsp;<c:out value="${product.p_no}"/></a></td>
+                    <th class="px-5"><a href="product-get?p_no=${product.p_no}"><img src="../resources/preview/<c:out value="${product.p_image}"/>" alt=""></a></th>
+                    <td class="px-5"><a href="product-get?p_no=${product.p_no}" class="text-primary fw-bold"><c:out value="${product.p_name}"/></a></td>
+                    <td class="px-5" class="fw-bold"><c:out value="${product.p_creator}"/></td>
+                    <td class="px-5"><c:out value="${product.p_price}"/></td>
+                    </tr>
+                    </c:forEach>
+                   
                     </tbody>
                   </table>
 
@@ -95,27 +78,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th class="px-5" scope="row"><a href="#">&nbsp;1</a></th>
-                          <td class="px-5">korea123</td>
-                          <td class="px-5"><a href="#" class="text-primary">홍길동</a></td>
-                          <td class="px-5">korea123@gmail.com</td>
-                          <td class="px-5"><span class="badge bg-dark">10,000</span></td>
+                      <c:forEach items="${mlist}" var="member">
+                      	<tr>
+                          <th class="px-5" scope="row"><a href="member-get?m_no=${member.m_no}">&nbsp;<c:out value="${member.m_no}"/></a></th>
+                          <td class="px-5"><a href="member-get?m_no=${member.m_no}"><c:out value="${member.m_id}"/></a></td>
+                          <td class="px-5"><c:out value="${member.m_name}"/></td>
+                          <td class="px-5"><c:out value="${member.m_email}"/></td>
+                          <td class="px-5"><span class="badge bg-dark"><c:out value="${member.m_point}"/></span></td>
                         </tr>
-                        <tr>
-                          <th class="px-5" scope="row"><a href="#">&nbsp;2</a></th>
-                          <td class="px-5">asdf123</td>
-                          <td class="px-5"><a href="#" class="text-primary">김길동</a></td>
-                          <td class="px-5">asdf123@gmail.com</td>
-                          <td class="px-5"><span class="badge bg-dark">2,000</span></td>
-                        </tr>
-                        <tr>
-                          <th class="px-5" scope="row"><a href="#">&nbsp;3</a></th>
-                          <td class="px-5">hhhh1111</td>
-                          <td class="px-5"><a href="#" class="text-primary">이길동</a></td>
-                          <td class="px-5">hhhh1111@gmail.com</td>
-                          <td class="px-5"><span class="badge bg-dark">7,000</span></td>
-                        </tr>
+                      </c:forEach>
+                       
                       </tbody>
                     </table>
 

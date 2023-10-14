@@ -1,3 +1,4 @@
+<%@page import="kr.co.domain.MemberDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -41,28 +42,19 @@
                           <th class="px-5" scope="col">Point</th>
                         </tr>
                       </thead>
+                      
                       <tbody>
-                        <tr>
-                            <th class="px-5" scope="row"><a href="memberget">&nbsp;1</a></th>
-                            <td class="px-5"><a href="memberget">korea123</a></td>
-                            <td class="px-5" class="text-primary">홍길동</td>
-                            <td class="px-5">korea123@gmail.com</td>
-                            <td class="px-5"><span class="badge bg-dark">10,000</span></td>
-                          </tr>
-                          <tr>
-                            <th class="px-5" scope="row"><a href="#">&nbsp;2</a></th>
-                            <td class="px-5"><a href="#">asdf123</a></td>
-                            <td class="px-5" class="text-primary">김길동</td>
-                            <td class="px-5">asdf123@gmail.com</td>
-                            <td class="px-5"><span class="badge bg-dark">2,000</span></td>
-                          </tr>
-                          <tr>
-                            <th class="px-5" scope="row"><a href="#">&nbsp;3</a></th>
-                            <td class="px-5"><a href="#">hhhh1111</a></td>
-                            <td class="px-5" class="text-primary">이길동</td>
-                            <td class="px-5">hhhh1111@gmail.com</td>
-                            <td class="px-5"><span class="badge bg-dark">7,000</span></td>
-                          </tr>
+                      <c:forEach items="${mlist}" var="member">
+                      <tr>
+                      	<th class="px-5" scope="row"><a href="member-get?m_no=${member.m_no}">&nbsp;
+                      		<c:out value="${member.m_no}"/></a></th>
+                        <td class="px-5"><a href="member-get?m_no=${member.m_no}"><c:out value="${member.m_id}"/></a></td>
+                        <td class="px-5" class="text-primary"><c:out value="${member.m_name}"/></td>
+                        <td class="px-5"><c:out value="${member.m_email}"/></td>
+                        <td class="px-5"><span class="badge bg-dark"><c:out value="${member.m_point}"/></span></td>
+                      </tr>
+                      </c:forEach>
+            
                       </tbody>
                     </table>
   

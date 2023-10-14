@@ -29,6 +29,9 @@
           <form class="px-4 row g-3" role="form" action="/admin/remove" method="post">
             <div class="col-md-12">
               <input type="text" class="form-control" placeholder="삭제하시려면 관리자 비밀번호를 입력해주세요." name="p_no">
+              <input type="hidden" name="before_image" value="${product.p_image}" />
+              <input type="hidden" name="p_name" value="${product.p_name}" />
+            
             </div>
             <div class="text-center py-4">
               <!-- <button type="submit" class="px-4 py-2 btn btn-success">Edit</button> -->

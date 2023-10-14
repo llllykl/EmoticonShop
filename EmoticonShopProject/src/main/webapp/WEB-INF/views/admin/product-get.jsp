@@ -30,7 +30,7 @@
                     <div class="row mb-5">
                         <label for="profileImage" class="py-4 col-md-4 col-lg-3 col-form-label">대표 이미지</label>
                         <div class="col-md-8 col-lg-9">
-                          <img src="../resources/assets/img/product-1.gif" alt="Profile" width="150px" height="150px">
+                          <img src="../resources/preview/<c:out value="${product.p_image}"/>" alt="Profile" width="150px" height="150px">
                         </div>
                       </div>
   
@@ -61,14 +61,15 @@
                       <div class="row mb-4">
                         <label for="about" class="col-md-4 col-lg-3 col-form-label">기타사항</label>
                         <div class="col-md-8 col-lg-9">
-                          <textarea name="about" class="form-control" id="about" style="height: 100px;" readonly="readonly">
-                          	<c:out value="${product.p_etc}"/></textarea>
+                          <textarea name="about" class="form-control" id="about" 
+                          	style="height: 100px;text-align: left;vertical-align: top" 
+                          readonly="readonly"><c:out value="${product.p_etc}"/></textarea>
                         </div>
                       </div>
 
                       <div class="text-center py-3">
                       <!-- 수정 버튼 -->
-                        <a href="product-modify?p_no=${product.p_no}" class="px-4 py-2 btn btn-success">Edit</a>&nbsp;
+                        <a href="product-modify?p_no=${product.p_no}" class="px-4 btn btn-success">Edit</a>&nbsp;
                        <!-- <button type="submit" class="px-4 btn btn-success">Edit</button>&nbsp; --> 
                       <!-- 삭제 버튼 -->
                         <a href="product-remove?p_no=${product.p_no}" class="px-3 btn btn-secondary">Delete</a>

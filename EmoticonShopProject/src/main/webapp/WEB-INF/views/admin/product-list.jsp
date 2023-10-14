@@ -47,7 +47,7 @@
 						<tr>
                           <td class="px-5" scope="row"><a href="product-get?p_no=${product.p_no}" class="text-primary fw-bold">&nbsp;
                           		<c:out value="${product.p_no}"/></a></td>
-                          <th class="px-5"><a href="product-get?p_no=${product.p_no}"><img src="../../resources/assets/img/product-1.gif" alt=""></a></th>
+                          <th class="px-5"><a href="product-get?p_no=${product.p_no}"><img src="../resources/preview/<c:out value="${product.p_image}"/>" alt=""></a></th>
                           <td class="px-5"><a href="product-get?p_no=${product.p_no}" class="text-primary fw-bold">
                           		<c:out value="${product.p_name}"/></a></td>
                           <td class="px-5" class="fw-bold">

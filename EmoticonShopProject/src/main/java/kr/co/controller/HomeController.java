@@ -35,6 +35,6 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "./shop/index";
+		return "forward:/shop/";	
 	}	
 }

@@ -25,13 +25,21 @@
               <div class="card-body">
                 <h5 class="py-4 card-title">Register Emoticon</h5>
                 <!-- General Form Elements -->
-                <form action="/admin/register" method="post">
+                <form action="/admin/register" method="post" enctype="multipart/form-data">
                 <div class="row mb-4">
-                    <label for="inputImage" class="col-sm-2 col-form-label">썸네일 업로드</label>
+                    <label for="inputImage" class="col-sm-2 col-form-label">대표 이미지 업로드</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="file" id="formFile" name="p_image" required="required">
+                        <input class="form-control" type="file" id="formFile" name="file" required="required">
                     </div>
                 </div>
+                
+                <div class="row mb-4">
+                    <label for="inputImage" class="col-sm-2 col-form-label">이모티콘 업로드(최대 20장)</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="file" id="formFiles" name="files" multiple="multiple">
+                    </div>
+                </div>
+                
                 <div class="row mb-4">
                     <label for="inputDate" class="col-sm-2 col-form-label">상품 등록일</label>
                     <div class="col-sm-10">
@@ -59,7 +67,7 @@
                 <div class="row mb-4">
                 <label for="inputText" class="col-sm-2 col-form-label">기타사항</label>
                     <div class="col-sm-10">
-                    <textarea class="form-control" style="height: 100px" name="p_etc"></textarea>
+                    <textarea class="form-control" style="height: 100px;text-align: left;vertical-align: top" name="p_etc"></textarea>
                     </div>
                 </div>
 

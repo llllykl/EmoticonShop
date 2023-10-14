@@ -27,40 +27,37 @@
                 <h5 class="py-4 card-title">Member Info</h5>
                 <!-- General Form Elements -->
                 <form>
-                    <div class="row mb-5">
+                    <div class="row mb-2">
                       <div class="row mb-4">
                         <label for="mid" class="col-md-4 col-lg-3 col-form-label">ID</label>
-                        <label for="mid" class="col-md-4 col-lg-3 col-form-label">korea123</label>
+                        <label for="mid" class="col-md-4 col-lg-3 col-form-label">
+                        	<c:out value="${member.m_id}"/></label>
                       </div>
   
                       <div class="row mb-4">
                         <label for="mname" class="col-md-4 col-lg-3 col-form-label">Name</label>
-                        <label for="mname" class="col-md-4 col-lg-3 col-form-label">홍길동</label>
+                        <label for="mname" class="col-md-4 col-lg-3 col-form-label">
+							<c:out value="${member.m_name}"/></label>
                       </div>
 
                       <div class="row mb-4">
                         <label for="memail" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                        <label for="memail" class="col-md-4 col-lg-3 col-form-label">korea123@gmail.com</label>
+                        <label for="memail" class="col-md-4 col-lg-3 col-form-label">
+                        	<c:out value="${member.m_email}"/></label>
                       </div>
 
                       <div class="row mb-4">
                         <label for="mpoint" class="col-md-4 col-lg-3 col-form-label">Point</label>
-                        <label for="mpoint" class="col-md-4 col-lg-3 col-form-label">₩10,000</label>
-                      </div>
-
-                      <div class="row mb-4">
-                        <label for="about" class="col-md-4 col-lg-3 col-form-label">기타사항</label>
-                        <div class="col-md-8 col-lg-9">
-                          <textarea name="about" class="form-control" id="about" style="height: 100px" readonly="readonly"></textarea>
-                        </div>
+                        <label for="mpoint" class="col-md-4 col-lg-3 col-form-label">
+                        	₩<c:out value="${member.m_point}"/></label>
                       </div>
 
                       <div class="text-center py-3">
-                        <a href="member" class="px-4 py-2 btn btn-success">회원 목록</a>&nbsp;
+                        <a href="member-list" class="px-5 py-2 btn btn-dark">회원 목록</a>&nbsp;
                        <!-- <button type="submit" class="px-4 btn btn-success">Edit</button>&nbsp; --> 
                        <!-- <button type="submit" class="px-3 btn btn-secondary">Delete</button> -->
                       </div>
-  
+  					</div>
                 </form><!-- End General Form Elements -->
   
               </div>
