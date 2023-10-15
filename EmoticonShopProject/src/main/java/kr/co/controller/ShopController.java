@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.domain.ImageDTO;
 import kr.co.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -27,8 +28,11 @@ public class ShopController {
 	// 신규 이모티콘 페이지 이동
 	@GetMapping("/newpage")
 	public String newPage(Model model) {
+		ImageDTO imageDTO = new ImageDTO();
 		log.info("Shop newPage");
+		model.addAttribute("imagelist", imageDTO.getImageList());
 		model.addAttribute("list", service.getList());
+		
 		return "./shop/newPage";
 	}
 	

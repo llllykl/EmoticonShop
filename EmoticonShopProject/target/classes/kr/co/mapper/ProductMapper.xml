@@ -21,6 +21,7 @@
 	values (#{p_no},#{p_name},#{p_price},#{p_image},#{p_creator},#{p_regdate},#{p_readcount},#{p_etc})
 </insert>
 
+
 <select id="read" resultType="kr.co.domain.ProductDTO">
 	select * from product where p_no=#{p_no}
 </select>

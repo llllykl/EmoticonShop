@@ -33,18 +33,35 @@
 								</div>
 								<a class="link_new new_img" aria-label="이모티콘" href="#">
 									<ul class="area_newemoticon">
-										<li>
-											<img src="../resources/emoticon/1/rabbit1.png">
+									<!-- 
+									<c:forEach items="${imagelist}" var="image" varStatus="status" begin="1" end="5">
+									<li>
+									   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${status.index}"/>"
+									   		width="140px" height="140px">
+									</li>
+									</c:forEach>
+									 -->
+									
+								
+									    <li>
+										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233a88f7b2cbb72be0bdfff91ad65b168ab.png"
+										   		width="140px" height="140px">
 										</li>
 										<li>
-											<img src="../resources/emoticon/1/rabbit2.png">
+											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233ac8e738cb631e72fdb9a96b36413984e.png"
+												 width="140px" height="140px">
 										</li>
 										<li>
-											<img src="../resources/emoticon/1/rabbit3.png">
+											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233b3a18fdf58bc66ec3f4b6084b7d0b570.png"
+											 width="140px" height="140px">
 										</li>
 										<li>
-											<img src="../resources/emoticon/1/rabbit4.png">
-										</li>
+											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233ce9463e040a07a9462a54df43e1d73f1.png"
+											 width="140px" height="140px">
+									</li>
+									 
+										
+								
 									</ul>
 								</a>
 							</li>

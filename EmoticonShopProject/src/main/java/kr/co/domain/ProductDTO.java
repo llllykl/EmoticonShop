@@ -1,5 +1,7 @@
 package kr.co.domain;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -10,6 +12,7 @@ public class ProductDTO {
 	private String p_name; // 상품명
 	private String p_price; // 상품가격
 	private String p_image; // 상품이미지명
+	private List<UploadDTO> imageList; // 상세 이미지 정보
 	private String p_creator; // 제작자명
 	private String p_regdate; // 상품등록일
 	private int p_readcount; // 상품조회수

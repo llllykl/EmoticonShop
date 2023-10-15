@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 import kr.co.domain.ProductDTO;
+import kr.co.domain.UploadDTO;
 
 public interface ProductMapper {	
 	public abstract ProductDTO read(Long p_no);

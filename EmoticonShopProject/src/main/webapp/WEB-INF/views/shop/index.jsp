@@ -39,7 +39,7 @@
 									<a class="link_emot" href="detailpage?p_no=${product.p_no}">
 										<span class="inner_emot">
 											<img src="../resources/preview/<c:out value="${product.p_image}"/>" class="img_emot img_default" 
-												width="150px" height="150px" alt="" />
+												width="140px" height="140px" alt="" />
 										</span>
 										<strong class="tit_product"><c:out value="${product.p_name}" /></strong>
 									</a>
