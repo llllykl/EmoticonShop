@@ -41,8 +41,27 @@
 									</li>
 									</c:forEach>
 									 -->
+									 
+									 <c:forEach items="${flist}" var="file" begin="1" end="4" varStatus="status">
+									   <li>
+										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${file.i_name}"/>"
+										   		width="140px" height="140px"/>
+										</li>	
 									
-								
+									<!-- 
+										<li>
+										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${file.i_name}"/>"
+										   		width="140px" height="140px" 
+										   		onerror="this.onerror=null; this.src='../resources/emoticons/잔망 루피 7/cefb8ed496e0541d2a99293a1fa06233a88f7b2cbb72be0bdfff91ad65b168ab.png';">
+										   		>
+										</li>
+									
+									 -->	
+			 					   		
+									
+									 </c:forEach>
+									
+									<!-- 
 									    <li>
 										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233a88f7b2cbb72be0bdfff91ad65b168ab.png"
 										   		width="140px" height="140px">
@@ -58,10 +77,10 @@
 										<li>
 											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233ce9463e040a07a9462a54df43e1d73f1.png"
 											 width="140px" height="140px">
-									</li>
+										</li>
+									
+									 -->
 									 
-										
-								
 									</ul>
 								</a>
 							</li>

@@ -36,12 +36,12 @@
 							
 							<c:forEach items="${plist}" var="product">								
 							<div class="list_unit">
-									<a class="link_emot" href="detailpage?p_no=${product.p_no}">
+									<a class="link_emot" href="/shop/detailpage?p_no=${product.p_no}">
 										<span class="inner_emot">
 											<img src="../resources/preview/<c:out value="${product.p_image}"/>" class="img_emot img_default" 
 												width="140px" height="140px" alt="" />
 										</span>
-										<strong class="tit_product"><c:out value="${product.p_name}" /></strong>
+										<h2 class="tit_product"><c:out value="${product.p_name}" /></h2>
 									</a>
 							</div>
 							</c:forEach>
@@ -55,6 +55,7 @@
 						<div class="wrap_hottab">
 							<h2 class="tit_section">
 								<a class="link_menu" href="poppage">
+								<br><br><br><br><br><br>
 									➤ 인기 이모티콘
 								</a>
 							</h2>

@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="../resources/css/style.css">
   <!-- Profile-detail Stylesheet -->
   <link rel="stylesheet" href="../resources/css/profile-details.css">
+  <!-- product-details Styleshhet -->
+  <link rel="stylesheet" href="../resources/css/product-details.css">
 
 </head>
 <body id="body">

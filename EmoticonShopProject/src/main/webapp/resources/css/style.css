@@ -1172,7 +1172,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 .single-product .product-pagination li + li:before {
   padding: 0 8px 0 0;
   color: #ccc;
-  content: "/ ";
+  content: "/�";
 }
 .single-product .product-pagination li a {
   color: #000;
@@ -2367,7 +2367,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, inp
 }
 /*# sourceMappingURL=style.css.map */
 
-/*여기부터 newPage.html----------------------------------------------------*/
+/*�ш린遺��� newPage.html----------------------------------------------------*/
 .list_new {
   width: 100%;
   max-width: 100%;
@@ -2492,9 +2492,9 @@ body, th, td, input, select, textarea, button {
   padding-left: 40px;
   box-sizing: border-box;
 }
-/*여기까지 newPage.html--------------------------------------------*/
+/* /newPage.html--------------------------------------------*/
 
-/*여기부터 popPage.html--------------------------------------------*/
+/* popPage.html--------------------------------------------*/
 .list_double {
   min-width: inherit;
   padding: 10px 0 10px 24px;
@@ -2534,4 +2534,4 @@ ol {
   width: calc(50% - 40px);
   box-sizing: border-box;
 }
-/* 여기까지 popPage.html--------------------------------------------*/
+/*/popPage.html--------------------------------------------*/

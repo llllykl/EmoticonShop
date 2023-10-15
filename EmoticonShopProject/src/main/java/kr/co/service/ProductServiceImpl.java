@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.domain.ProductDTO;
 import kr.co.mapper.ProductMapper;
@@ -18,10 +19,20 @@ public class ProductServiceImpl implements ProductService {
 	@Setter(onMethod_ = @Autowired)
 	private ProductMapper mapper;
 	
+	@Transactional
 	@Override
 	public void register(ProductDTO product) {
 		log.info("register..." + product);
 		mapper.insertSelectKey(product);
+		
+		if (product.getImageList() == null || product.getImageList().size() <= 0) {
+			return;
+		}
+		
+		product.getImageList().forEach(file -> {
+			file.setI_pno(product.getP_no());
+			mapper.imageEnroll(file);
+		});
 	}
 
 	@Override

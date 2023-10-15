@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.co.domain.ProductDTO;
+import kr.co.domain.UploadDTO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
@@ -22,6 +23,17 @@ public class ProductMapperTests {
 	public void testGetList() {
 		mapper.getList().forEach(product -> log.info(product));
 	}
+	
+//	@Test
+//	public void imageEnrollTest() {
+//		UploadDTO upload = new UploadDTO();
+//	
+//		upload.setI_name("testname1");
+//		upload.setI_pno(15);
+//		upload.setI_uploadpath("testpath1");
+//		
+//		mapper.imageEnroll(upload);
+//	}
 	
 	/*
 	@Test
@@ -58,10 +70,13 @@ public class ProductMapperTests {
 		log.info(product);
 	}
 	*/
+	/*
 	@Test
 	public void testDelete() {
 		log.info("DELTE COUNT: " + mapper.delete(2L));
 	}
+	*/
+	/*
 	@Test
 	public void testUpdate() {
 		ProductDTO product = new ProductDTO();
@@ -74,5 +89,5 @@ public class ProductMapperTests {
 		int count = mapper.update(product);
 		log.info("UPDATE COUNT: " + count);
 	}
-	
+	*/
 }

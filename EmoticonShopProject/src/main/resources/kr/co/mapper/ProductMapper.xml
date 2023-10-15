@@ -14,8 +14,9 @@
 </insert>
 
 <insert id="insertSelectKey">
-	<selectKey keyProperty="p_no" order="BEFORE" resultType="long">
-		select MAX(p_no)+1 from product
+	<selectKey keyProperty="p_no" order="AFTER" resultType="long">
+		<!-- select MAX(p_no)+1 from product  -->
+		select LAST_INSERT_ID()
 	</selectKey>
 	insert into product(p_no,p_name,p_price,p_image,p_creator,p_regdate,p_readcount,p_etc)
 	values (#{p_no},#{p_name},#{p_price},#{p_image},#{p_creator},#{p_regdate},#{p_readcount},#{p_etc})
@@ -34,5 +35,9 @@
 	update product set p_name=#{p_name},p_price=#{p_price},p_image=#{p_image},p_creator=#{p_creator},
 	p_regdate=#{p_regdate},p_readcount=#{p_readcount},p_etc=#{p_etc} where p_no=#{p_no}
 </update>
+
+<insert id="imageEnroll">
+	insert into imagefile(i_no, i_pno, i_name, i_uploadpath) values (#{i_no},#{i_pno},#{i_name},#{i_uploadpath})
+</insert>
 
 </mapper>

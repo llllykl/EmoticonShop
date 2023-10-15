@@ -4,8 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.co.domain.ImageDTO;
+import kr.co.mapper.FileMapper;
 import kr.co.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -15,23 +16,25 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @RequestMapping("/shop/*")
 public class ShopController {
-	private ProductService service; // product service
+	private ProductService pservice; // product service
+	private FileMapper fservice; // File service(이모티콘상세파일)
 	
 	// 쇼핑몰 메인
 	@GetMapping({"","/index"})
 	public String index(Model model) {
 		log.info("Shop main");
-		model.addAttribute("plist", service.getList());
+		model.addAttribute("plist", pservice.getList());
 		return "./shop/index";
 	}
 	
 	// 신규 이모티콘 페이지 이동
 	@GetMapping("/newpage")
 	public String newPage(Model model) {
-		ImageDTO imageDTO = new ImageDTO();
+		
 		log.info("Shop newPage");
-		model.addAttribute("imagelist", imageDTO.getImageList());
-		model.addAttribute("list", service.getList());
+		
+		model.addAttribute("list", pservice.getList());
+		model.addAttribute("flist", fservice.getImageList1());
 		
 		return "./shop/newPage";
 	}
@@ -44,7 +47,10 @@ public class ShopController {
 	
 	// 이모티콘 상세페이지 이동
 	@GetMapping("/detailpage")
-	public String detailPage() {
+	public String detailPage(@RequestParam("p_no") Long p_no, Model model) {
+		log.info("shop getlist");
+		model.addAttribute("product", pservice.get(p_no));
+		model.addAttribute("flist", fservice.getImageList(p_no));
 		return "./shop/detailPage";
 	}
 	

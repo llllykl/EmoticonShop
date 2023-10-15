@@ -27,7 +27,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.domain.ImageDTO;
 import kr.co.domain.MemberDTO;
 import kr.co.domain.ProductDTO;
 import kr.co.domain.UploadDTO;
@@ -71,52 +70,25 @@ public class AdminController {
 		return "./admin/product-register";
 	}
 	
-	// 상품 등록 처리, before
+	// 상품 등록 처리
 	@PostMapping("/register")
 	public String register(ProductDTO product, RedirectAttributes rttr,
 		@RequestParam("file") MultipartFile file, MultipartHttpServletRequest files) {	
 		String p_image = upload(file);
-		ArrayList<String> p_images = uploads(files, product.getP_name());
-		ImageDTO imageDTO = new ImageDTO();
+		List<UploadDTO> imageList = uploads(files, product.getP_name());
 		
-		if (p_image == null || p_images.isEmpty()) { // 이미지 업로드 실패
+		if (p_image == null || imageList.isEmpty()) { // 이미지 업로드 실패
 			log.info("product image null...");
 			return "redirect:/admin/product-list";	
 		} else { // 이미지 업로드 성공
-			imageDTO.setImageList(p_images);
+			product.setImageList(imageList);
 			product.setP_image(p_image);
 			log.info("register: " + product);	
-			//log.info("저장?.." + imageDTO.getImageList());
 			service.register(product);
 			rttr.addFlashAttribute("result", product.getP_no());
 			return "redirect:/admin/product-list";	
 		}
 	} 
-
-	/*
-	// 상품 다중 이미지 업로드 메서드
-	private List<String> uploads(MultipartHttpServletRequest multipartReq) throws Exception {
-		List<String> fileList = new ArrayList<String>();
-		Iterator<String> fileNames = multipartReq.getFileNames();
-		
-		while (fileNames.hasNext()) {
-			String fileName = fileNames.next();
-			MultipartFile mFile = multipartReq.getFile(fileName);
-			String originalFileName = mFile.getOriginalFilename();
-			fileList.add(originalFileName);
-			File file = new File(IMAGES_REPO + "\\" + "temp" + "\\" + fileName);
-			
-			if (mFile.getSize() != 0) { // File null check
-				if (!file.exists()) { // 경로상에 파일이 존재하지 않는 경우
-					file.getParentFile().mkdirs(); // 경로에 해당하는 디렉토리들을 생성
-					mFile.transferTo(new File(IMAGES_REPO + "\\" + "temp" + "\\" +
-							originalFileName)); // 임시로 저장된 multipartFile을 실제 파일로 전송
-				}
-			}
-		}
-		return fileList;
-	}
-	*/
 	
 	// 상품 대표 이미지 업로드 메서드
 	private String upload(MultipartFile file) {
@@ -151,14 +123,16 @@ public class AdminController {
 
 
 	// 상품 다중 이미지 업로드 메서드
-	public ArrayList<String> uploads(MultipartHttpServletRequest files, String p_name) {
+	public List<UploadDTO> uploads(MultipartHttpServletRequest files, String p_name) {
 		List<MultipartFile> image_list = files.getFiles("files");
 		ArrayList<String> images = new ArrayList<String>();
+		List<UploadDTO> uploadDTOList = new ArrayList<UploadDTO>();
 		
 		if (image_list == null) {
 			return null;
 		} else {
 			for (int i = 0; i < image_list.size(); i++) {
+				UploadDTO uploadDTO = new UploadDTO();
 				String fileRealName = image_list.get(i).getOriginalFilename();
 				long size = image_list.get(i).getSize();
 				images.add(fileRealName);
@@ -167,6 +141,10 @@ public class AdminController {
 				System.out.println("파일 사이즈: " + size);
 				
 				Path directory = Paths.get(IMAGES_REPO, p_name);
+				
+				uploadDTO.setI_name(fileRealName);
+				uploadDTO.setI_uploadpath(IMAGES_REPO);
+				uploadDTOList.add(uploadDTO);
 				
 				if (Files.exists(directory)) { // 이미 경로가 존재하는 경우
 					File saveFiles = new File(directory + "//" + fileRealName);
@@ -184,6 +162,7 @@ public class AdminController {
 						e1.printStackTrace();
 					}		
 					File saveFiles = new File(directory + "//" + fileRealName);
+				
 					try {
 						image_list.get(i).transferTo(saveFiles);
 					} catch (IllegalStateException e) {
@@ -193,8 +172,10 @@ public class AdminController {
 					}						
 				}	
 			}		
-			System.out.println("test list값 출력: " + images);
-			return images;
+			
+			System.out.println("uploadDTOList 출력: " + uploadDTOList);
+			
+			return uploadDTOList;
 		}	
 	} 
 	
@@ -244,23 +225,6 @@ public class AdminController {
 			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
 			RedirectAttributes rttr) {
 		String before_image = b_img; // 등록된 이미지명
-		
-		// 관리자 비밀번호 check
-//		if (pw_check.equals(member.getM_pw())) {
-//			if (!deleteFile(before_image, p_name)) { // 파일 삭제 실패
-//				log.info("file delete fail...");
-//				return "redirect:/admin/product-list";
-//			} else { // 파일 삭제 성공
-//				log.info("remove..." + p_no);
-//				if (service.remove(p_no)) {
-//					rttr.addFlashAttribute("result", "success");
-//				}
-//				return "redirect:/admin/product-list";			
-//			}
-//		} else {
-//			log.info("관리자 비밀번호 불일치");
-//			return "redirect:/admin/product-list";
-//		}
 		
 		if (!deleteFile(before_image, p_name)) { // 파일 삭제 실패
 			log.info("file delete fail...");

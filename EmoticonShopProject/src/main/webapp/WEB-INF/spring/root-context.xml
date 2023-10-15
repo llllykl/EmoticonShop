@@ -24,6 +24,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
 	<mybatis-spring:scan base-package="kr.co.mapper"/>
 	<context:component-scan base-package="kr.co.service"></context:component-scan>
 </beans>
