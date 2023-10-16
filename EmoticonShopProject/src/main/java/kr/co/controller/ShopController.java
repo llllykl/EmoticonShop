@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.domain.ProductDTO;
 import kr.co.mapper.FileMapper;
 import kr.co.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -24,15 +26,14 @@ public class ShopController {
 	public String index(Model model) {
 		log.info("Shop main");
 		model.addAttribute("plist", pservice.getList());
+		model.addAttribute("deslist", pservice.descList());
 		return "./shop/index";
 	}
 	
 	// 신규 이모티콘 페이지 이동
 	@GetMapping("/newpage")
 	public String newPage(Model model) {
-		
 		log.info("Shop newPage");
-		
 		model.addAttribute("list", pservice.getList());
 		model.addAttribute("flist", fservice.getImageList1());
 		
@@ -41,17 +42,36 @@ public class ShopController {
 	
 	// 인기 이모티콘 페이지 이동
 	@GetMapping("/poppage") 
-	public String popPage() {
+	public String popPage(Model model) {
+		log.info("Shop popPage");
+		model.addAttribute("deslist", pservice.descList());
 		return "./shop/popPage";
 	}
 	
 	// 이모티콘 상세페이지 이동
 	@GetMapping("/detailpage")
-	public String detailPage(@RequestParam("p_no") Long p_no, Model model) {
+	public String detailPage(@RequestParam("p_no") Long p_no, Model model,
+			RedirectAttributes rttr) {
 		log.info("shop getlist");
-		model.addAttribute("product", pservice.get(p_no));
-		model.addAttribute("flist", fservice.getImageList(p_no));
-		return "./shop/detailPage";
+		ProductDTO product = pservice.get(p_no);
+	    int cnt = product.getP_readcount() + 1;
+	    product.setP_readcount(cnt);
+	    if (pservice.modify(product)) {
+	    	log.info("Product read count add success");
+			model.addAttribute("product", pservice.get(p_no));
+			model.addAttribute("flist", fservice.getImageList(p_no));
+	    	return "./shop/detailPage";	
+	    } else {
+	    	log.info("Product read count add fail");
+	    	return "./shop/";	
+	    } 
+	}
+	
+	// 이모티콘 결제페이지 이동
+	@GetMapping("/approve") 
+	public String approvePage() {
+		log.info("approve page");
+		return "./shop/approvePage";
 	}
 	
 }

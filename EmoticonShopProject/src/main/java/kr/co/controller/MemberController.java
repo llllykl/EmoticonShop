@@ -65,7 +65,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 			if(login == null) {
 				session.setAttribute("member", null);
 				rttr.addFlashAttribute("msg", false);
-			}else {
+			} else {
 				session.setAttribute("member", login);
 			}
 			

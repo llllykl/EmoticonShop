@@ -16,4 +16,5 @@ public interface ProductMapper {
 	public abstract int update(ProductDTO product);
 	public abstract void imageEnroll(UploadDTO upload); // 상세이미지업로드
 	public abstract void deleteImageAll(Long i_pno); // 상세이미지삭제
+	public abstract List<ProductDTO> readCountDescList(); // 조회수 내림차순 출력
 }

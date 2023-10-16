@@ -71,4 +71,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.getList();
 	}
 
+	@Override
+	public List<ProductDTO> descList() {
+		log.info("readCount desList...");
+		return mapper.readCountDescList();
+	}
+
 }

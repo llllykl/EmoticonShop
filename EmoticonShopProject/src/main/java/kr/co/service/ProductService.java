@@ -10,4 +10,5 @@ public interface ProductService {
 	public abstract boolean modify(ProductDTO product);
 	public abstract boolean remove(Long p_no);
 	public abstract List<ProductDTO> getList();
+	public abstract List<ProductDTO> descList();
 }

@@ -97,7 +97,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/shop/mypage">
+              <a class="dropdown-item d-flex align-items-center" href="/member/profile-details">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>

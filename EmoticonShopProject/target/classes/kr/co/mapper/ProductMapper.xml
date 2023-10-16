@@ -8,6 +8,11 @@
 	select * from product where p_no > 0
 </select>
 
+<!-- readCount DESList -->
+<select id="readCountDescList" resultType="kr.co.domain.ProductDTO">
+	select * from product where p_no > 0 order by p_readcount DESC;
+</select>
+
 <insert id="insert" useGeneratedKeys="true" keyProperty="p_no">
 	insert into product(p_name,p_price,p_image,p_creator,p_regdate,p_readcount,p_etc)
 	values (#{p_name},#{p_price},#{p_image},#{p_creator},#{p_regdate},#{p_readcount},#{p_etc})
@@ -21,7 +26,6 @@
 	insert into product(p_no,p_name,p_price,p_image,p_creator,p_regdate,p_readcount,p_etc)
 	values (#{p_no},#{p_name},#{p_price},#{p_image},#{p_creator},#{p_regdate},#{p_readcount},#{p_etc})
 </insert>
-
 
 <select id="read" resultType="kr.co.domain.ProductDTO">
 	select * from product where p_no=#{p_no}
@@ -44,6 +48,5 @@
 <delete id="deleteImageAll">
 	delete from imagefile where i_pno=#{i_pno}
 </delete>
-
 
 </mapper>

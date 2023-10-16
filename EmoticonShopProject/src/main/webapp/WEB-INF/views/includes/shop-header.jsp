@@ -172,16 +172,16 @@
 					<ul class="nav navbar-nav">
 						<!-- Home -->
 						<li class="home-tab">
-							<a href="/shop/" style="font-size: large;text-decoration: underline; 
+							<a href="/shop/" id="home" style="font-size: large;text-decoration: underline; 
 							text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
 						</li><!-- / Home -->
 						<!-- 신규 -->
 						<li class="new-tab">
-							<a href="/shop/newpage"  data-delay="350" style="font-size: large;color: gray;">신규</a>
+							<a href="/shop/newpage" id="new" data-delay="350" style="font-size: large;color: gray;">신규</a>
 						</li><!-- / 신규 -->
 						<!-- 인기 -->
 						<li class="popular-tab">
-							<a href="/shop/poppage"  data-delay="350" style="font-size: large;color: gray;">인기</a>
+							<a href="/shop/poppage" id="pop" data-delay="350" style="font-size: large;color: gray;">인기</a>
 						</li><!-- / 인기 -->
 					</ul><!-- / .nav .navbar-nav -->
 				</div>

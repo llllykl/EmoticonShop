@@ -13,6 +13,7 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -225,24 +226,57 @@ public class AdminController {
 		}
 	}
 	
+	// 기존 remove
+//	@PostMapping("/remove")
+//	public String remove(ProductDTO product, @RequestParam("p_no") Long p_no,
+//			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
+//			RedirectAttributes rttr) {
+//		String before_image = b_img; 
+//			
+//		if (service.remove(p_no)) {
+//			if (!deleteFile(before_image, p_name)) {
+//				log.info("file delete fail...");
+//				return "redirect:/admin/product-list";
+//			} else {
+//				log.info("remove..." + p_no);				
+//				rttr.addFlashAttribute("result", "success");
+//				return "redirect:/admin/product-list";		
+//			}		
+//		} else {
+//			log.info("remove fail...");
+//			return "redirect:/admin/product-list";		
+//		}
+//		
+//	}
+	
 	@PostMapping("/remove")
-	public String remove(ProductDTO product, @RequestParam("p_no") Long p_no,
+	public String remove(ProductDTO product, 
 			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
-			RedirectAttributes rttr) {
+			@RequestParam("m_pw") String m_pw, RedirectAttributes rttr, HttpSession session) {
 		String before_image = b_img; 
-			
-		if (service.remove(p_no)) {
-			if (!deleteFile(before_image, p_name)) {
-				log.info("file delete fail...");
-				return "redirect:/admin/product-list";
-			} else {
-				log.info("remove..." + p_no);				
-				rttr.addFlashAttribute("result", "success");
-				return "redirect:/admin/product-list";		
-			}		
+		
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
+		String sessionPass = member.getM_pw();
+		
+		if(!(sessionPass.equals(m_pw))) {
+			log.info("상품 삭제 실패: 관리자 비밀번호 불일치");
+			rttr.addFlashAttribute("msg", false);
+			rttr.addAttribute("p_no", product.getP_no());
+			return "redirect:/admin/product-remove";
 		} else {
-			log.info("remove fail...");
-			return "redirect:/admin/product-list";		
+			if (service.remove(product.getP_no())) {
+				if (!deleteFile(before_image, p_name)) {
+					log.info("file delete fail...");
+					return "redirect:/admin/product-list";
+				} else {
+					log.info("remove..." + product.getP_no());				
+					rttr.addFlashAttribute("result", "success");
+					return "redirect:/admin/product-list";		
+				}		
+			} else {
+				log.info("remove fail...");
+				return "redirect:/admin/product-list";		
+			}
 		}
 		
 	}
