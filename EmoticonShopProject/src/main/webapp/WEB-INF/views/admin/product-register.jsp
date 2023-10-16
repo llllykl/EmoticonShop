@@ -25,18 +25,20 @@
               <div class="card-body">
                 <h5 class="py-4 card-title">Register Emoticon</h5>
                 <!-- General Form Elements -->
-                <form action="/admin/register" method="post" enctype="multipart/form-data">
+                <form action="/admin/register" method="post" id="register-form" enctype="multipart/form-data">
                 <div class="row mb-4">
                     <label for="inputImage" class="col-sm-2 col-form-label">대표 이미지 업로드</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="file" id="formFile" name="file" required="required">
+                        <input class="form-control" type="file" id="formFile" name="file" 
+                        	accept="image/*" required="required">
                     </div>
                 </div>
                 
                 <div class="row mb-4">
                     <label for="inputImage" class="col-sm-2 col-form-label">이모티콘 업로드(최대 20장)</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="file" id="formFiles" name="files" multiple="multiple">
+                        <input class="form-control" type="file" id="formFiles" name="files" multiple="multiple"
+                        	accept="image/*" required="required" onchange="fileCheck(this);">
                     </div>
                 </div>
                 
@@ -89,5 +91,21 @@
   </main><!-- End #main -->
 
 <%@include file="../includes/admin-footer.jsp" %>
+
+<script>
+let fileNo = 0; 
+let fileArr = [];
+/* 첨부파일 개수 지정 메서드 */
+function fileCheck(obj) {
+	let maxFileCnt = 20;
+	let curFileCnt = obj.files.length;
+	
+	if (curFileCnt > maxFileCnt) {
+		alert("이미지는 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+		document.getElementById('register-form').reset();
+		return;
+	}
+}
+</script>
 </body>
 </html>

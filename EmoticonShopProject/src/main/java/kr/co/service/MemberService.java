@@ -5,12 +5,12 @@ import java.util.List;
 import kr.co.domain.MemberDTO;
 
 public interface MemberService {
-	public abstract void register(MemberDTO member);
-	public abstract MemberDTO get(long m_no); 
-	public abstract List<MemberDTO> getList(); 
-	
-	public abstract boolean remove(long m_no); 
-	public abstract boolean modify(MemberDTO member); 
-	
-	public abstract MemberDTO login(MemberDTO member);
+	public abstract void register(MemberDTO dto) throws Exception;
+	public abstract MemberDTO get(Long m_no);
+	public abstract MemberDTO login(MemberDTO dto) throws Exception;
+	public abstract void memberUpdate(MemberDTO dto) throws Exception;
+	public abstract void memberDelete(MemberDTO dto) throws Exception;
+	public abstract int passChk(MemberDTO dto) throws Exception;
+	public abstract int idChk(MemberDTO dto) throws Exception;
+	public abstract List<MemberDTO> getList() throws Exception;  
 }

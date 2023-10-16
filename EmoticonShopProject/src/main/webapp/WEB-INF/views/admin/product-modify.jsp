@@ -35,11 +35,13 @@
                         <div class="pt-2">
                         <input type="hidden" name="before_image" value="${product.p_image}" />&nbsp;&nbsp;&nbsp;
                         
-                        <input type="file" id="formFile" name="file" style="display: none;"> 
+                        <input type="file" id="formFile" name="file" accept="image/*"> 
                         
+                        <!-- 
                         <a href="#" id="image-btn" onClick="onclick=document.all.file.click()" class="btn btn-primary btn-md" title="Upload new profile image"><i class="bi bi-upload"></i></a>                                             
                         
                         <a href="#" class="btn btn-danger btn-md" onClick="onclick=" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                         -->
                         </div>
                     </div>
                 </div>
@@ -47,12 +49,14 @@
                 <div class="row mb-4">
                     <label for="inputImage" class="col-sm-2 col-form-label">이모티콘 업로드(최대 20장)</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="file" id="formFiles" name="files" multiple="multiple">
+                        <input class="form-control" type="file" id="formFiles" name="files" accept="image/*" multiple="multiple"
+                        	onchange="fileCheck(this);" >
                     </div>
                 </div>
                 
                 <input type="hidden" name="p_no" value='<c:out value="${product.p_no}"/>'>
-                
+                <input type="hidden" name="p_image" value='<c:out value="${product.p_image}"/>'>
+                <input type="hidden" name="before_name" value='<c:out value="${product.p_name}"/>'>                
                 <div class="row mb-4">
                     <label for="inputDate" class="col-sm-2 col-form-label">상품 수정일</label>
                     <div class="col-sm-10">
@@ -111,6 +115,7 @@
 const submitform = document.querySelector("#modify-form");
 submitform.addEventListener("submit", submitImage);
 
+/*
 function submitImage(event) {
 	event.preventDefault(); // 자동 submit 막아줌
 	const imgInput = submitform.querySelector("#formFile");
@@ -120,7 +125,22 @@ function submitImage(event) {
 	} else {
 		submitform.submit();
 	}
+} */
+
+let fileNo = 0; 
+let fileArr = [];
+/* 첨부파일 개수 지정 메서드 */
+function fileCheck(obj) {
+	let maxFileCnt = 20;
+	let curFileCnt = obj.files.length;
+	
+	if (curFileCnt > maxFileCnt) {
+		alert("이미지는 최대 " + maxFileCnt + "개 까지 첨부 가능합니다.");
+		document.getElementById('modify-form').reset();
+		return;
+	}
 }
+
 </script>
 </body>
 </html>

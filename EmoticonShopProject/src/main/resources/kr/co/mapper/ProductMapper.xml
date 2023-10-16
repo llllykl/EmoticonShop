@@ -36,8 +36,14 @@
 	p_regdate=#{p_regdate},p_readcount=#{p_readcount},p_etc=#{p_etc} where p_no=#{p_no}
 </update>
 
+<!-- image files -->
 <insert id="imageEnroll">
 	insert into imagefile(i_no, i_pno, i_name, i_uploadpath) values (#{i_no},#{i_pno},#{i_name},#{i_uploadpath})
 </insert>
+
+<delete id="deleteImageAll">
+	delete from imagefile where i_pno=#{i_pno}
+</delete>
+
 
 </mapper>

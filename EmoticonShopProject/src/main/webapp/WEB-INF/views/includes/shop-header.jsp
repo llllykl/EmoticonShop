@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +31,30 @@
   <link rel="stylesheet" href="../resources/css/profile-details.css">
   <!-- product-details Styleshhet -->
   <link rel="stylesheet" href="../resources/css/product-details.css">
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="../resources/css/style_main.css">
+  <!-- jquery -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#logoutBtn").on("click", function(){
+			location.href="/member/logout";
+		})
+		$("#registerBtn").on("click", function(){
+			location.href="/member/register";
+		})
+		
+		$("#memberUpdateBtn").on("click", function(){
+			location.href="/member/member-update-view";
+		})
+		
+		$("#memberDeleteBtn").on("click", function(){
+			location.href="/member/member-delete-view";
+		})
+		
+	})
+</script>
 
 </head>
 <body id="body">
@@ -60,10 +86,12 @@
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<!-- Cart -->
 				<ul class="top-menu text-right list-inline">
+				<c:if test="${member.m_access == 1}">
 					<!-- Admin -->
 					<li>
 						<a href="/admin/">Admin</a>
 					</li><!-- / Admin -->
+					</c:if>
 					<!-- Search -->
 					<li class="dropdown search dropdown-slide">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"  style="font-size: medium;"><i
@@ -82,25 +110,38 @@
 							class="tf-ion-android-person"></i>&nbsp;My</a>
 					-->
 					 <li class="dropdown profile-nav dropdown-slide">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"  style="font-size: medium;"><i
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="font-size: medium;"><i
 								class="tf-ion-android-person"></i>&nbsp;My</a>
 						<div class="dropdown-menu profile-dropdown">
 							<!-- info -->
+							
 							<div class="media">
 								<div class="media-body">
+								<c:if test="${member == null}">
+							<p>로그인 해주세요</p>
+							<ul class="text-center profile-buttons">
+								<li><a href="/member/login">로그인</a></li>
+							</c:if>
+							<c:if test="${member != null }">
 									<div class="profile">
-										<h4>홍길동</h4>
-									</div>
-									<h5>korea123@gmail.com</h5>
+										&nbsp;<h4>${member.m_id}님</h4>
+									</div>&nbsp;&nbsp;
+									<h5>${member.m_email}</h5>
 								</div>
+								<ul class="text-center profile-buttons">
+								<li><button id="logoutBtn" type="button"  class="btn btn-small" style="font-size: small;">로그아웃</button></li>
+								<li><a href="/member/profile-details" class="btn btn-small" style="font-size: small;">마이페이지</a></li>
+								</c:if>
+							</ul>
+								
 							</div><!-- / info -->
 							<ul class="text-center profile-buttons">
-								<li><a href="/shop/mypage" class="btn btn-small" style="font-size: small;">MyPage</a></li>
-								<li><a href="/shop/" class="btn btn-small btn-solid-border" style="font-size: small;">Logout</a></li>
+								
+								
+							
 							</ul>
 						</div>
 					</li><!-- / My -->
-
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>
 			

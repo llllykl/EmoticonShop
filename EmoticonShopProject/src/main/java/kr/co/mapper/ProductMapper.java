@@ -14,5 +14,6 @@ public interface ProductMapper {
 	public abstract void insertSelectKey(ProductDTO product);
 	public abstract int delete(Long p_no);
 	public abstract int update(ProductDTO product);
-	public abstract void imageEnroll(UploadDTO upload);
+	public abstract void imageEnroll(UploadDTO upload); // 상세이미지업로드
+	public abstract void deleteImageAll(Long i_pno); // 상세이미지삭제
 }

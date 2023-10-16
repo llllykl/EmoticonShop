@@ -44,7 +44,19 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public boolean modify(ProductDTO product) {
 		log.info("modify..." + product);
-		return mapper.update(product) == 1;
+		int result = mapper.update(product);
+		
+		if (result == 1 && product.getImageList() != null &&
+				product.getImageList().size() > 0) {
+			mapper.deleteImageAll(product.getP_no());
+			
+			product.getImageList().forEach(file -> {
+				file.setI_pno(product.getP_no());
+				mapper.imageEnroll(file);
+			});
+		}
+		
+		return true;
 	}
 
 	@Override

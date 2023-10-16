@@ -11,17 +11,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -40,47 +43,44 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @RequestMapping("/admin/*")
 public class AdminController {
-	private ProductService service; // product service
+	private ProductService service; // product service;
+	@Inject
 	private MemberService mservice; // member service 
-	// 이미지 저장 경로
 	//private static final String IMAGE_REPO = "D:\\lyk\\workspacespring\\EmoticonShopProject\\src\\main\\webapp\\resources\\preview";
+	//private static final String IMAGES_REPO = "D:\\lyk\\workspacespring\\EmoticonShopProject\\src\\main\\webapp\\resources\\emoticons";
 	private static final String IMAGE_REPO = "C:\\Users\\ykl06\\git\\EmoticonShop\\EmoticonShopProject\\src\\main\\webapp\\resources\\preview";
 	private static final String IMAGES_REPO = "C:\\Users\\ykl06\\git\\EmoticonShop\\EmoticonShopProject\\src\\main\\webapp\\resources\\emoticons";
 
 	
-	// 관리자 메인(product, member)
 	@GetMapping("")
-	public String adminMain(Model model) {
+	public String adminMain(Model model) throws Exception {
 		log.info("Admin page");
 		model.addAttribute("plist", service.getList());
 		model.addAttribute("mlist", mservice.getList());
 		return "./admin/admin";
 	}
 	
-	// 상품 전체 출력
 	@GetMapping("/product-list")
 	public void testList(Model model) {
 		log.info("product list");
 		model.addAttribute("list", service.getList());
 	}
 	
-	// 상품 등록페이지 이동
 	@GetMapping("/product-register")
 	public String register() {
 		return "./admin/product-register";
 	}
 	
-	// 상품 등록 처리
 	@PostMapping("/register")
 	public String register(ProductDTO product, RedirectAttributes rttr,
 		@RequestParam("file") MultipartFile file, MultipartHttpServletRequest files) {	
 		String p_image = upload(file);
 		List<UploadDTO> imageList = uploads(files, product.getP_name());
 		
-		if (p_image == null || imageList.isEmpty()) { // 이미지 업로드 실패
+		if (p_image == null || imageList.isEmpty()) { 
 			log.info("product image null...");
 			return "redirect:/admin/product-list";	
-		} else { // 이미지 업로드 성공
+		} else { 
 			product.setImageList(imageList);
 			product.setP_image(p_image);
 			log.info("register: " + product);	
@@ -90,14 +90,13 @@ public class AdminController {
 		}
 	} 
 	
-	// 상품 대표 이미지 업로드 메서드
 	private String upload(MultipartFile file) {
-		String fileRealName = file.getOriginalFilename(); // 파일명 얻어내는 메서드
-		long size = file.getSize(); // 파일 사이즈
+		String fileRealName = file.getOriginalFilename(); 
+		long size = file.getSize(); 
 		
-		System.out.println("대표 파일명: " + fileRealName);
-		System.out.println("대표 파일사이즈 " + size);
-		// 서버에 저장할 파일이름 fileExtension으로 .jsp와 같은 확장자명을 구함
+		System.out.println("��ǥ ���ϸ�: " + fileRealName);
+		System.out.println("��ǥ ���ϻ�����: " + size);
+		
 		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
 		
 		UUID uuid = UUID.randomUUID();
@@ -105,14 +104,14 @@ public class AdminController {
 		String[] uuids = uuid.toString().split("-");
 			
 		String uniqueName = uuids[0];
-		System.out.println("생성된 고유 문자열: " + uniqueName);
-		System.out.println("확장자명: " + fileExtension);
+		System.out.println("������ ���� ���ڿ�: " + uniqueName);
+		System.out.println("Ȯ���ڸ�: " + fileExtension);
 		String p_image = uniqueName + fileExtension;
 		
-		// uuid 적용 후
+
 		File saveFile = new File(IMAGE_REPO + "\\" + uniqueName + fileExtension);
 		try { 
-			file.transferTo(saveFile); // 실제 파일 저장 메서드
+			file.transferTo(saveFile);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -122,7 +121,6 @@ public class AdminController {
 	}
 
 
-	// 상품 다중 이미지 업로드 메서드
 	public List<UploadDTO> uploads(MultipartHttpServletRequest files, String p_name) {
 		List<MultipartFile> image_list = files.getFiles("files");
 		ArrayList<String> images = new ArrayList<String>();
@@ -137,8 +135,8 @@ public class AdminController {
 				long size = image_list.get(i).getSize();
 				images.add(fileRealName);
 				
-				System.out.println("파일명: " + fileRealName);
-				System.out.println("파일 사이즈: " + size);
+				System.out.println("���ϸ�: " + fileRealName);
+				System.out.println("���ϻ�����: " + size);
 				
 				Path directory = Paths.get(IMAGES_REPO, p_name);
 				
@@ -146,7 +144,7 @@ public class AdminController {
 				uploadDTO.setI_uploadpath(IMAGES_REPO);
 				uploadDTOList.add(uploadDTO);
 				
-				if (Files.exists(directory)) { // 이미 경로가 존재하는 경우
+				if (Files.exists(directory)) { 
 					File saveFiles = new File(directory + "//" + fileRealName);
 					try {
 						image_list.get(i).transferTo(saveFiles);
@@ -155,14 +153,13 @@ public class AdminController {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}			
-				} else { // 경로가 존재하지 않는 경우 새로 생성
+				} else { 
 					try {
 						Files.createDirectories(directory);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}		
 					File saveFiles = new File(directory + "//" + fileRealName);
-				
 					try {
 						image_list.get(i).transferTo(saveFiles);
 					} catch (IllegalStateException e) {
@@ -173,13 +170,12 @@ public class AdminController {
 				}	
 			}		
 			
-			System.out.println("uploadDTOList 출력: " + uploadDTOList);
+			System.out.println("uploadDTOList: " + uploadDTOList);
 			
 			return uploadDTOList;
 		}	
 	} 
 	
-	// 상품 조회, 수정, 삭제 페이지 이동
 	@GetMapping({"/product-get", "/product-modify", "/product-remove"})
 	public void get(@RequestParam("p_no") Long p_no, Model model) {
 		log.info("/get or modify or remove");
@@ -187,93 +183,99 @@ public class AdminController {
 	}
 	
 	
-	// 상품 수정 처리
 	@PostMapping("/modify")
 	public String modify(ProductDTO product, RedirectAttributes rttr,
 			@RequestParam("file") MultipartFile file, MultipartHttpServletRequest files,
-			@RequestParam("before_image") String b_img) {
-		String p_image = upload(file); // 대표 이미지 업로드 
-		String before_image = b_img; // 수정 전 이미지
+			@RequestParam("before_image") String b_img, @RequestParam("before_name") String b_name) {
+		List<MultipartFile> uploadFileList = files.getFiles("uploadfiles");
 		
-		if (p_image == null) {
-			log.info("product image null...");
-			return "redirect:/admin/product-list";
-		} else {
-			if (!deleteFile(before_image, product.getP_name())) { // 삭제 실패
-				log.info("file delete fail...");
-				return "redirect:/admin/product-list";
-			} else { // 삭제 성공
-				if (uploads(files, product.getP_name()).isEmpty()) { // 수정 이미지 업로드 실패
-					log.info("product uploads fail...");
-					return "redirect:/admin/product-list";
-				} else { // 수정 이미지 업로드 성공
-					product.setP_image(p_image);
+
+		if (file.isEmpty()) {
+			product.setImageList(product.getImageList());
+			product.setP_image(product.getP_image());
+			product.setP_name(product.getP_name());
+			if (service.modify(product)) {
 					log.info("modify: " + product);
-					if (service.modify(product)) {
-						rttr.addFlashAttribute("result", "success");
-					}
-					return "redirect:/admin/product-list";							
+					rttr.addFlashAttribute("result", "success");
+					return "redirect:/admin/product-list";	
+				} else {
+					log.info("product modify fail...");
+					return "redirect:/admin/product-list";	
 				}
-			}
-		}	
-	} 
-	
-	
-	// 상품 삭제 처리
-	@PostMapping("/remove")
-	public String remove(@RequestParam("p_no") Long p_no,
-			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
-			RedirectAttributes rttr) {
-		String before_image = b_img; // 등록된 이미지명
+		} 
+      
+		String p_image = upload(file); 
+		String before_image = b_img; 
 		
-		if (!deleteFile(before_image, p_name)) { // 파일 삭제 실패
+		if (!deleteFile(before_image, b_name)) { 
 			log.info("file delete fail...");
 			return "redirect:/admin/product-list";
-		} else { // 파일 삭제 성공
-			log.info("remove..." + p_no);
-			if (service.remove(p_no)) {
+		} else { 
+			List<UploadDTO> imageList = uploads(files, product.getP_name());
+			product.setP_image(p_image);
+			product.setImageList(imageList);
+			if (service.modify(product)) {
+				log.info("modify: " + product);
 				rttr.addFlashAttribute("result", "success");
+				return "redirect:/admin/product-list";	
+			} else {
+				log.info("product modify fail...");
+				return "redirect:/admin/product-list";	
 			}
-			return "redirect:/admin/product-list";			
+		}
+	}
+	
+	@PostMapping("/remove")
+	public String remove(ProductDTO product, @RequestParam("p_no") Long p_no,
+			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
+			RedirectAttributes rttr) {
+		String before_image = b_img; 
+			
+		if (service.remove(p_no)) {
+			if (!deleteFile(before_image, p_name)) {
+				log.info("file delete fail...");
+				return "redirect:/admin/product-list";
+			} else {
+				log.info("remove..." + p_no);				
+				rttr.addFlashAttribute("result", "success");
+				return "redirect:/admin/product-list";		
+			}		
+		} else {
+			log.info("remove fail...");
+			return "redirect:/admin/product-list";		
 		}
 		
 	}
 	
-	// 상품 파일 삭제 메서드
 	public boolean deleteFile(String fileName, String productName) {
 		log.info("delete image file :" + fileName);
 		File file = null;
 		File directory = null;
 		try {
 			file = new File(IMAGE_REPO + "\\" + URLDecoder.decode(fileName, "UTF-8"));
-			// 대표 이미지 삭제
 			file.delete();
 			
 			directory = new File(IMAGES_REPO + "\\" + URLDecoder.decode(productName, "UTF-8"));
-			// 기존 이모티콘 저장한 폴더의 하위 파일 삭제
 			File[] directoryList = directory.listFiles();
 			for (int j = 0; j < directoryList.length; j++) {
 				System.out.println(directoryList[j].delete());
 			}
-			// 기존 이모티콘 저장한 폴더 삭제
 			if (directory.isDirectory()) {
 				directory.delete();
 			}
+			return true;
 		} catch(Exception e)	 {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
-	// 회원 전체 출력
 	@GetMapping("/member-list")
-	public void memberList(Model model) {
+	public void memberList(Model model) throws Exception {
 		log.info("member list");
 		model.addAttribute("mlist", mservice.getList());
 	}
 	
-	// 회원 조회 페이지 이동
 	@GetMapping("/member-get")
 	public void memberGet(@RequestParam("m_no") Long m_no, Model model) {
 		log.info("/member-get");

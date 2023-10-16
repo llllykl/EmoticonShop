@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -43,9 +44,15 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<script type="text/javascript">
+	function sessionCheck() {
+		location.href="/member/logout";
+	}
+</script>
 <body>
-
+  <c:if test="${member.m_access != 1}">
+	 sessionCheck();
+  </c:if>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -100,7 +107,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/shop/">
+              <a class="dropdown-item d-flex align-items-center" href="/member/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

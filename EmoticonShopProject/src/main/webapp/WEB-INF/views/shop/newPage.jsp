@@ -42,7 +42,7 @@
 									</c:forEach>
 									 -->
 									 
-									 <c:forEach items="${flist}" var="file" begin="1" end="4" varStatus="status">
+									 <c:forEach items="${flist}" var="file" varStatus="status">
 									   <li>
 										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${file.i_name}"/>"
 										   		width="140px" height="140px"/>

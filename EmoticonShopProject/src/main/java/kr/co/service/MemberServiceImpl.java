@@ -11,47 +11,63 @@ import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
-
 @Log4j
-@Service 
+@Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
-
-	@Setter(onMethod_=@Autowired)
-	private MemberMapper mapper;  
-
-	@Override
-	public void register(MemberDTO member) { 
-		log.info("register..." + member);
-	}
+	@Setter(onMethod_ = @Autowired)
+	private MemberMapper dao;
+	
 
 	@Override
-	public MemberDTO get(long m_no) {
-		log.info("get..." + m_no);
-		return mapper.read(m_no);
-	}
-
-	@Override
-	public List<MemberDTO> getList() {
-		log.info("getlist...");
-		return mapper.getList();
-	}
-
-	@Override
-	public boolean remove(long m_no) { 
-		log.info("remove..." + m_no);
-		return mapper.delete(m_no) == 1;
-	}
-
-	@Override
-	public boolean modify(MemberDTO member) {
-		log.info("modify..."+member);
-		return mapper.update(member) == 1;
+	public void register(MemberDTO dto) throws Exception {
+		
+		dao.register(dto);
 	}
 	
 	@Override
-	public MemberDTO login(MemberDTO member) { 
-		return mapper.memberLogin(member);
+	public MemberDTO get(Long m_no) {
+		log.info("get......" + m_no);
+		try {
+			return dao.read(m_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public MemberDTO login(MemberDTO dto) throws Exception {
+	return dao.login(dto);
+	}
+	
+	@Override
+	public void memberUpdate(MemberDTO dto) throws Exception {
+		dao.memberUpdate(dto);
+		
+	}
+	
+	@Override
+	public void memberDelete(MemberDTO dto) throws Exception {
+		dao.memberDelete(dto);
+	}
+	
+	@Override
+	public int passChk(MemberDTO dto) throws Exception {
+		int result = dao.passChk(dto);
+		return result;
+	}
+	
+	@Override
+	public int idChk(MemberDTO dto) throws Exception {
+		int result = dao.idChk(dto);
+		return result;
+	}
+
+	@Override
+	public List<MemberDTO> getList() throws Exception {
+		log.info("getlist...");
+		return dao.getList();
 	}
 
 }

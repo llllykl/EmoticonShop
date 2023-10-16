@@ -54,23 +54,4 @@ public class ShopController {
 		return "./shop/detailPage";
 	}
 	
-	@GetMapping("/mypage") 
-	public String myPage() {
-		return "./shop/profile-details";
-	}
-	
-	@GetMapping("/order")
-	public String order() {
-		return "./shop/order";
-	}
-	
-	@GetMapping("/member-update") 
-	public String memberUpdate() {
-		return "./shop/member-update";
-	}
-	
-	@GetMapping("/member-delete")
-	public String memberDelete() {
-		return "./shop/member-delete";
-	}
 }
