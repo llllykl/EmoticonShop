@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.domain.MemberDTO;
+import kr.co.service.BuyService;
 import kr.co.service.MemberService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -30,6 +31,7 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 	
 	@Inject
 	 MemberService service;
+	 BuyService bservice;
 	
 	 @RequestMapping(value = "/register", method = RequestMethod.GET) public void
 	 getRegister() throws Exception { logger.info("get register"); }
@@ -78,16 +80,6 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 			session.invalidate();
 			
 			return "redirect:/";
-		}
-		
-		@GetMapping("/profile-details")
-		public String profileDetails() {
-			return "./member/profile-details";
-		}
-		
-		@GetMapping("/order") 
-		public String orderPage() {
-			return "./member/order";
 		}
 		
 		@RequestMapping(value="/member-update-view", method = RequestMethod.GET)
@@ -140,6 +132,22 @@ private static final Logger logger = LoggerFactory.getLogger(MemberController.cl
 		public int idChk(MemberDTO dto) throws Exception {
 			int result = service.idChk(dto);
 			return result;
+		}
+		
+		@GetMapping("/profile-details")
+		public String profileDetails(@RequestParam("m_id") String m_id,
+				Model model) throws Exception {
+			log.info("profile detail page...");
+			model.addAttribute("my", service.getId(m_id));
+			return "./member/profile-details";
+		}
+		
+		@GetMapping("/order")
+		public String orderPage(@RequestParam("m_no") Long m_no, Model model) {
+			log.info("order page...");
+			model.addAttribute("morder", bservice.orderList(m_no));
+			model.addAttribute("m_no", m_no);
+			return "./member/order";
 		}
 
 }

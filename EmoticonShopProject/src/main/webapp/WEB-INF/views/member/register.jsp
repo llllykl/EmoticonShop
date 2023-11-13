@@ -165,7 +165,7 @@
             
           </form>
         
-          <p class="mt-20">Already hava an account ?<a href="login"> Login</a></p>
+          <p class="mt-20">이미 계정이 존재합니까 ?<a href="login"> Login</a></p>
        
         </div>
       </div>

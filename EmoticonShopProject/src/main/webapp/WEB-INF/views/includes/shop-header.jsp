@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!-- jstl 포맷라이브러리 추가 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,10 +54,24 @@
 		})
 		
 	})
-</script>
 
+	function pointCheck() {
+		var span_point = document.getElementById("m_point").innerText;
+		var span_price = document.getElementById("p_price").innerText;
+		var point = Number(span_point);
+		var price = Number(span_price);
+		
+		if (point >= price) {
+			var afterPoint = (point-price);
+			var testPoint = afterPoint.toString();
+			var x = document.getElementsByClassName("afterpoint")[0];
+			x.innerText = testPoint;	
+		}
+	}
+	
+</script>
 </head>
-<body id="body">
+<body id="body" onload="pointCheck()">
 <div id="wrap">
 	<!-- Start Top Header Bar -->
 <section class="top-header">
@@ -130,7 +144,7 @@
 								</div>
 								<ul class="text-center profile-buttons">
 								<li><button id="logoutBtn" type="button"  class="btn btn-small" style="font-size: small;">로그아웃</button></li>
-								<li><a href="/member/profile-details" class="btn btn-small" style="font-size: small;">마이페이지</a></li>
+								<li><a href="/member/profile-details?m_id=${member.m_id}" class="btn btn-small" style="font-size: small;">마이페이지</a></li>
 								</c:if>
 							</ul>
 								
@@ -150,42 +164,3 @@
 	</div>
 </section><!-- End Top Header Bar -->
 
-
-<!-- Main Menu Section -->
-<section class="menu">
-	<nav class="navbar navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<h2 class="menu-title">메인 메뉴</h2>
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-					aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-
-			</div><!-- / .navbar-header -->
-
-			<!-- Navbar Links -->
-			<div id="navbar" class="navbar-collapse collapse text-center">
-					<ul class="nav navbar-nav">
-						<!-- Home -->
-						<li class="home-tab">
-							<a href="/shop/" id="home" style="font-size: large;text-decoration: underline; 
-							text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
-						</li><!-- / Home -->
-						<!-- 신규 -->
-						<li class="new-tab">
-							<a href="/shop/newpage" id="new" data-delay="350" style="font-size: large;color: gray;">신규</a>
-						</li><!-- / 신규 -->
-						<!-- 인기 -->
-						<li class="popular-tab">
-							<a href="/shop/poppage" id="pop" data-delay="350" style="font-size: large;color: gray;">인기</a>
-						</li><!-- / 인기 -->
-					</ul><!-- / .nav .navbar-nav -->
-				</div>
-			<!--/.navbar-collapse -->
-		</div><!-- / .container -->
-	</nav>
-</section>

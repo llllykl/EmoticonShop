@@ -56,6 +56,17 @@ public class MemberDAOImpl implements MemberMapper {
 	@Override
 	public List<MemberDTO> getList() {
 		return null;
+	}
+
+	@Override
+	public MemberDTO readId(String m_id) throws Exception {
+		return null;
+	}
+
+	@Override
+	public void pointUpdate(MemberDTO dto) throws Exception {
+		sql.update("MemberMapper.pointUpdat", dto); 
+		
 	}	
 
 }

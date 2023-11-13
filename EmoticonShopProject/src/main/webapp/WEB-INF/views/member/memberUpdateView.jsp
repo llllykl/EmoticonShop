@@ -68,6 +68,10 @@
 					return false;
 				}
 			});
+			
+			$("#cancel").on("click", function() {
+				location.href="/member/profile-details?m_id=${member.m_id}"
+			})
 		})
 	</script>
 	<script type="text/javascript">
@@ -125,7 +129,7 @@ margin-bottom: 40px;
            
             <div class="text-center">
               <button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
-              <button class="cencle btn btn-danger" type="button">취소</button>
+              <button class="cencle btn btn-danger" type="button" id="cancel">취소</button>
             </div>
           </form>
         </div>

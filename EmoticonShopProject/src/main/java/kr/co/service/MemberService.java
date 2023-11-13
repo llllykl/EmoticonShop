@@ -13,4 +13,6 @@ public interface MemberService {
 	public abstract int passChk(MemberDTO dto) throws Exception;
 	public abstract int idChk(MemberDTO dto) throws Exception;
 	public abstract List<MemberDTO> getList() throws Exception;  
+	public abstract MemberDTO getId(String m_id) throws Exception;
+	public abstract void pointUpdate(MemberDTO dto) throws Exception;
 }

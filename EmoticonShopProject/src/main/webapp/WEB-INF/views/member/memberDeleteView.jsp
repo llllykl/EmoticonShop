@@ -49,10 +49,10 @@
 		$(document).ready(function(){
 			// 취소
 			$(".cencle").on("click", function(){
-				
-				location.href = "/";
-						    
+				location.href="/member/profile-details?m_id=${member.m_id}"
 			})
+			
+			
 		
 			$("#submit").on("click", function(){
 				if($("#m_pw").val()==""){
@@ -106,7 +106,7 @@
             <div class="text-center">
              <div class="form-group has-feedback">
 				<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
-				<button class="cencle btn btn-danger" type="button">취소</button>
+				<button class="cencle btn btn-danger" type="button" id="cancel">취소</button>
 			</div>
             </div>
          <div>
@@ -114,7 +114,7 @@
 					비밀번호가 맞지 않습니다.
 				</c:if>
 			</div>
-          <p class="mt-20"><a href="/member/profile-details">Back to Mypage</a></p>
+          <p class="mt-20"><a href="/member/profile-details?m_id=${member.m_id}">Back to Mypage</a></p>
         </div>
         <div>
 				

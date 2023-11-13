@@ -5,6 +5,45 @@
 
 <%@include file="../includes/shop-header.jsp" %>
 
+<!-- Main Menu Section -->
+<section class="menu">
+	<nav class="navbar navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<h2 class="menu-title">메인 메뉴</h2>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div><!-- / .navbar-header -->
+
+			<!-- Navbar Links -->
+			<div id="navbar" class="navbar-collapse collapse text-center">
+					<ul class="nav navbar-nav">
+						<!-- Home -->
+						<li class="home-tab">
+							<a href="/shop/" id="home" style="font-size: large;text-decoration: underline; 
+							text-underline-offset: 8px;text-decoration-thickness: 2px;">홈</a>
+						</li><!-- / Home -->
+						<!-- 신규 -->
+						<li class="new-tab">
+							<a href="/shop/newpage" id="new" data-delay="350" style="font-size: large;color: gray;">신규</a>
+						</li><!-- / 신규 -->
+						<!-- 인기 -->
+						<li class="popular-tab">
+							<a href="/shop/poppage" id="pop" data-delay="350" style="font-size: large;color: gray;">인기</a>
+						</li><!-- / 인기 -->
+					</ul><!-- / .nav .navbar-nav -->
+				</div>
+			<!--/.navbar-collapse -->
+		</div><!-- / .container -->
+	</nav>
+</section>
+
 <section class="page-header">
 	<div class="container">
 		<div class="row">
@@ -28,7 +67,7 @@
 					
 					<li><a class="active" href="/member/order">Orders</a></li>
 					
-					<li><a href="/member/profile-details">Profile Details</a></li>
+					<li><a href="/member/profile-details?m_id=${member.m_id}">Profile Details</a></li>
 				</ul>
 				<div class="dashboard-wrapper user-dashboard">
 					<div class="table-responsive">
@@ -45,50 +84,16 @@
 								
 							</thead>
 							<tbody>
-							<c:forEach items="${list}" var="list">
+							<c:forEach items="${morder}" var="order">
 								<tr>
-									<td><c:out value="${list.b_no}"/></td>
-									<td><c:out value="${list.b_regdate}"/></td>
-									<td><%-- <a href="/상세페이지?b_no=${list.b_no}"> --%><c:out value="${list.p_name}" /><!-- </a> --></td>
-									<td><c:out value="${list.p_price}"/></td>
+									<td><c:out value="${order.b_no}"/></td>
+									<td><c:out value="${order.b_regdate}"/></td>
+									<td><a href="/shop/detailpage?p_no=${order.p_no}"><c:out value="${order.p_name}" /></a></td>
+									<td><c:out value="${order.p_price}"/></td>
 									<td><span class="label label-primary">Completed</span></td>
-									<td><a href="order" class="btn btn-default">View</a></td>
+									<td><a href="/shop/detailpage?p_no=${order.p_no}" class="btn btn-default">View</a></td>
 								</tr>
 								</c:forEach> 
-								<tr>
-									<td>${read.b_no}</td>
-									<td>${read.b_regdate}</td>
-									<td>${read.p_name}</td>
-									<td>${read.p.price}</td>
-									<td>${read.p.price}</td>
-									<td><span class="label label-success">Completed</span></td>
-									<td><a href="order" class="btn btn-default">View</a></td>
-								</tr>
-								<tr>
-									<td>#451231</td>
-									<td>Mar 25, 2016</td>
-									<td>3</td>
-									<td>$150.00</td>
-									<td><span class="label label-danger">Completed</span></td>
-									<td><a href="order" class="btn btn-default">View</a></td>
-								</tr>
-								<tr>
-									<td>#451231</td>
-									<td>Mar 25, 2016</td>
-									<td>2</td>
-									<td>$99.00</td>
-									<td><span class="label label-info">Completed</span></td>
-									<td><a href="order" class="btn btn-default">View</a></td>
-								</tr>
-								<tr>
-									<td>#451231</td>
-									<td>Mar 25, 2016</td>
-									<td>3</td>
-									<td>$150.00</td>
-									<td><span class="label label-warning">Completed</span></td>
-									<td><a href="order.html" class="btn btn-default">View</a></td>
-								</tr>
-								
 							</tbody>
 						</table>
 					</div>

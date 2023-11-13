@@ -31,6 +31,7 @@
                 <div class="row mb-5">
                    <label for="profileImage" class="py-4 col-md-4 col-lg-3 col-form-label">대표 이미지 업로드</label>
                     <div class="col-md-8 col-lg-9">
+                        <div style="font-weight: bolder;color: grey;">기존 이모티콘</div>
                         <img src="../resources/preview/<c:out value="${product.p_image}"/>" alt="Profile" width="150px" height="150px">
                         <div class="pt-2">
                         <input type="hidden" name="before_image" value="${product.p_image}" />&nbsp;&nbsp;&nbsp;

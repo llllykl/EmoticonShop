@@ -70,4 +70,20 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getList();
 	}
 
+	@Override
+	public MemberDTO getId(String m_id) throws Exception {
+		log.info("get id......" + m_id);
+		try {
+			return dao.readId(m_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public void pointUpdate(MemberDTO dto) throws Exception {
+		dao.pointUpdate(dto);
+	}
+
 }

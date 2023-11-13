@@ -97,7 +97,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/member/profile-details">
+              <a class="dropdown-item d-flex align-items-center" href="/member/profile-details?m_id=${member.m_id}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -170,7 +170,7 @@
         </a>
       </li><!-- End Register Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/shop/">
+        <a class="nav-link collapsed" href="/member/logout">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>&nbsp;로그아웃</span>
         </a>

@@ -222,15 +222,15 @@ background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
 							<ul class="text-center profile-buttons">
 								<li><a href="/member/login">로그인</a></li>
 							</c:if>
-							<c:if test="${member != null }">
+							<c:if test="${member != null}"> 
 									<div class="profile">
 										&nbsp;<h4>${member.m_id}님</h4>
 									</div>&nbsp;&nbsp;
 									<h5>${member.m_email}</h5>
 								</div>
 								<ul class="text-center profile-buttons">
-								<li><button id="logoutBtn" type="button" class="btn btn-small" style="font-size: small; margin-bottom:20px" >로그아웃</button></li>
-								<li><a href="/member/profile-details" class="btn btn-small" style="font-size: small;">마이페이지</a></li>
+								<li><button id="logoutBtn" type="button" class="btn btn-small" style="font-size: small; margin-bottom:20px">로그아웃</button></li>
+								<li><a href="/member/profile-details?m_id=${member.m_id}" class="btn btn-small" style="font-size: small;">마이페이지</a></li>
 								</c:if>
 							</ul>
 								
@@ -307,9 +307,9 @@ background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
       <div class="col-md-12">
         <ul class="list-inline dashboard-menu text-center">
           
-          <li><a href="/member/order">Orders</a></li>
+          <li><a href="/member/order?m_no=<c:out value="${my.m_no}"/>">Orders</a></li>
 			
-          <li><a class="active" href="/member/profile-details">Profile Details</a></li>
+          <li><a class="active" href="/member/profile-details?m_id=${member.m_id}">Profile Details</a></li>
         </ul>
         <div class="dashboard-wrapper dashboard-user-profile">
           <div class="media">
@@ -323,7 +323,7 @@ background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
              	<li><span>ID:</span>${member.m_id}</li>
                 <li><span>Full Name:</span>${member.m_name}</li>
                 <li><span>Email:</span>${member.m_email}</li>
-                <li><span>Point:</span>${member.m_point}</li>
+                <li><span>Point:</span>${my.m_point}</li>
                
               </ul>
               </c:if>

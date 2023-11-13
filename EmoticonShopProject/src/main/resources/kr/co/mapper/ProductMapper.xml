@@ -5,7 +5,7 @@
 <mapper namespace="kr.co.mapper.ProductMapper">
 
 <select id="getList" resultType="kr.co.domain.ProductDTO">
-	select * from product where p_no > 0
+	select * from product where p_no > 0 order by p_no DESC;
 </select>
 
 <!-- readCount DESList -->

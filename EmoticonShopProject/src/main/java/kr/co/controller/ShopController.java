@@ -9,6 +9,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.domain.ProductDTO;
 import kr.co.mapper.FileMapper;
+import kr.co.service.FileService;
+import kr.co.service.MemberService;
 import kr.co.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -19,7 +21,8 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/shop/*")
 public class ShopController {
 	private ProductService pservice; // product service
-	private FileMapper fservice; // File service(이모티콘상세파일)
+	private FileService fservice; // File service(이모티콘상세파일)
+	private MemberService mservice;
 	
 	// 쇼핑몰 메인
 	@GetMapping({"","/index"})
@@ -50,8 +53,7 @@ public class ShopController {
 	
 	// 이모티콘 상세페이지 이동
 	@GetMapping("/detailpage")
-	public String detailPage(@RequestParam("p_no") Long p_no, Model model,
-			RedirectAttributes rttr) {
+	public String detailPage(@RequestParam("p_no") Long p_no, Model model) {
 		log.info("shop getlist");
 		ProductDTO product = pservice.get(p_no);
 	    int cnt = product.getP_readcount() + 1;
@@ -65,13 +67,6 @@ public class ShopController {
 	    	log.info("Product read count add fail");
 	    	return "./shop/";	
 	    } 
-	}
-	
-	// 이모티콘 결제페이지 이동
-	@GetMapping("/approve") 
-	public String approvePage() {
-		log.info("approve page");
-		return "./shop/approvePage";
 	}
 	
 }

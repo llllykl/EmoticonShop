@@ -4,6 +4,45 @@
 
 <%@include file="../includes/shop-header.jsp" %>
 
+<!-- Main Menu Section -->
+<section class="menu">
+	<nav class="navbar navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<h2 class="menu-title">메인 메뉴</h2>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div><!-- / .navbar-header -->
+
+			<!-- Navbar Links -->
+			<div id="navbar" class="navbar-collapse collapse text-center">
+					<ul class="nav navbar-nav">
+						<!-- Home -->
+						<li class="home-tab">
+							<a href="/shop/" id="home" style="font-size: large;color: gray;">홈</a>
+						</li><!-- / Home -->
+						<!-- 신규 -->
+						<li class="new-tab">
+							<a href="/shop/newpage" id="new" data-delay="350" style="font-size: large;text-decoration: underline; 
+							text-underline-offset: 8px;text-decoration-thickness: 2px;">신규</a>
+						</li><!-- / 신규 -->
+						<!-- 인기 -->
+						<li class="popular-tab">
+							<a href="/shop/poppage" id="pop" data-delay="350" style="font-size: large;color: gray;">인기</a>
+						</li><!-- / 인기 -->
+					</ul><!-- / .nav .navbar-nav -->
+				</div>
+			<!--/.navbar-collapse -->
+		</div><!-- / .container -->
+	</nav>
+</section>
+
 <!-- banner  -->
 <div class="new-banner">
         <img src="../resources/images/newbanner.png"  width="100%" height="auto"/>
@@ -21,185 +60,28 @@
 						<c:forEach items="${list}" var="product">
 							<li class>
 								<div class="link_new new_tit">
-									<a class="link_new" href="#">
+									<a class="link_new" href="/shop/detailpage?p_no=${product.p_no}">
 										<div class="area_tit">
 											<strong class="tit_product">
 												<span class="txt_tit">
 												<c:out value="${product.p_name}"/>
 												</span>
 											</strong>
+											<p><c:out value="${product.p_creator}"/></p>
 										</div>
 									</a>
 								</div>
-								<a class="link_new new_img" aria-label="이모티콘" href="#">
+								<a class="link_new new_img" aria-label="이모티콘" href="/shop/detailpage?p_no=${product.p_no}">
 									<ul class="area_newemoticon">
-									<!-- 
-									<c:forEach items="${imagelist}" var="image" varStatus="status" begin="1" end="5">
-									<li>
-									   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${status.index}"/>"
-									   		width="140px" height="140px">
-									</li>
-									</c:forEach>
-									 -->
-									 
-									 <c:forEach items="${flist}" var="file" varStatus="status">
 									   <li>
-										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${file.i_name}"/>"
+										   <img src="../resources/preview/<c:out value="${product.p_image}"/>"
 										   		width="140px" height="140px"/>
-										</li>	
-									
-									<!-- 
-										<li>
-										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/<c:out value="${file.i_name}"/>"
-										   		width="140px" height="140px" 
-										   		onerror="this.onerror=null; this.src='../resources/emoticons/잔망 루피 7/cefb8ed496e0541d2a99293a1fa06233a88f7b2cbb72be0bdfff91ad65b168ab.png';">
-										   		>
-										</li>
-									
-									 -->	
-			 					   		
-									
-									 </c:forEach>
-									
-									<!-- 
-									    <li>
-										   <img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233a88f7b2cbb72be0bdfff91ad65b168ab.png"
-										   		width="140px" height="140px">
-										</li>
-										<li>
-											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233ac8e738cb631e72fdb9a96b36413984e.png"
-												 width="140px" height="140px">
-										</li>
-										<li>
-											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233b3a18fdf58bc66ec3f4b6084b7d0b570.png"
-											 width="140px" height="140px">
-										</li>
-										<li>
-											<img src="../resources/emoticons/<c:out value="${product.p_name}"/>/cefb8ed496e0541d2a99293a1fa06233ce9463e040a07a9462a54df43e1d73f1.png"
-											 width="140px" height="140px">
-										</li>
-									
-									 -->
-									 
+									   </li>	
 									</ul>
 								</a>
 							</li>
 						</c:forEach>
 						
-						
-					<!-- 
-							<li class>
-								<div class="link_new new_tit">
-									<a class="link_new" href="#">
-										<div class="area_tit">
-											<strong class="tit_product">
-												<span class="txt_tit">첫번째 신규 이모티콘</span>
-											</strong>
-										</div>
-									</a>
-								</div>
-								<a class="link_new new_img" aria-label="토끼 이모티콘" href="#">
-									<ul class="area_newemoticon">
-										<li>
-											<img src="../resources/emoticon/1/rabbit1.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/1/rabbit2.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/1/rabbit3.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/1/rabbit4.png">
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class> 
-								<div class="link_new new_tit">
-									<a class="link_new" href="#">
-										<div class="area_tit">
-											<strong class="tit_product">
-												<span class="txt_tit">두번째 신규 이모티콘</span>
-											</strong>
-										</div>
-									</a>
-								</div>
-								<a class="link_new new_img" aria-label="동그리 이모티콘" href="#">
-									<ul class="area_newemoticon">
-										<li>
-											<img src="../resources/emoticon/2/dongueri1.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/2/dongueri2.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/2/dongueri3.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/2/dongueri4.png">
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class> 
-								<div class="link_new new_tit">
-									<a class="link_new" href="#">
-										<div class="area_tit">
-											<strong class="tit_product">
-												<span class="txt_tit">세번째 신규 이모티콘</span>
-											</strong>
-										</div>
-									</a>
-								</div>
-								<a class="link_new new_img" aria-label="강아지 이모티콘" href="#">
-									<ul class="area_newemoticon">
-										<li>
-											<img src="../resources/emoticon/3/dog1.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/3/dog2.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/3/dog3.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/3/dog4.png">
-										</li>
-									</ul>
-								</a>
-							</li>
-							<li class> 
-								<div class="link_new new_tit">
-									<a class="link_new" href="#">
-										<div class="area_tit">
-											<strong class="tit_product">
-												<span class="txt_tit">네번째 신규 이모티콘</span>
-											</strong>
-										</div>
-									</a>
-								</div>
-								<a class="link_new new_img" aria-label="빵빵이 이모티콘" href="#">
-									<ul class="area_newemoticon">
-										<li>
-											<img src="../resources/emoticon/4/bbangbbange1.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/4/bbangbbange2.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/4/bbangbbange3.png">
-										</li>
-										<li>
-											<img src="../resources/emoticon/4/bbangbbange4.png">
-										</li>
-									</ul>
-								</a>
-							</li>
-					 -->
-						
-							
-							
 						</ul>
 					</div>
 				</div>

@@ -226,29 +226,6 @@ public class AdminController {
 		}
 	}
 	
-	// ±‚¡∏ remove
-//	@PostMapping("/remove")
-//	public String remove(ProductDTO product, @RequestParam("p_no") Long p_no,
-//			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
-//			RedirectAttributes rttr) {
-//		String before_image = b_img; 
-//			
-//		if (service.remove(p_no)) {
-//			if (!deleteFile(before_image, p_name)) {
-//				log.info("file delete fail...");
-//				return "redirect:/admin/product-list";
-//			} else {
-//				log.info("remove..." + p_no);				
-//				rttr.addFlashAttribute("result", "success");
-//				return "redirect:/admin/product-list";		
-//			}		
-//		} else {
-//			log.info("remove fail...");
-//			return "redirect:/admin/product-list";		
-//		}
-//		
-//	}
-	
 	@PostMapping("/remove")
 	public String remove(ProductDTO product, 
 			@RequestParam("before_image") String b_img, @RequestParam("p_name") String p_name,
